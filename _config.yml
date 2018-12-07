@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
 
 title: [CHIME/FRB Open Data]
+logo: ["static/chime-frb-logo.png"]
 description: [Open data release from CHIME/FRB Collaboration]
-show_downloads: ["false"]

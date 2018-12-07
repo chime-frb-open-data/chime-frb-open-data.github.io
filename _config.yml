@@ -2,6 +2,4 @@ theme: jekyll-theme-minimal
 
 title: [CHIME/FRB Open Data]
 description: [Open data release from CHIME/FRB Collaboration]
-
-logo: [static/chime-frb-logo.png]
 show_downloads: ["false"]

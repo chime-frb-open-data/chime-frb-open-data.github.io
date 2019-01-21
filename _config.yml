@@ -1,4 +1,5 @@
 theme: jekyll-theme-slate
 
-title: [CHIME/FRB]
-description: [Open data release from CHIME/FRB Collaboration]
+title: [CHIME/FRB Collaboration]
+description: [Open Data Release]
+show_downloads: ["false"]

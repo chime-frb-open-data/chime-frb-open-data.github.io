@@ -2,6 +2,8 @@
 
 Welcome to Canadian Hydroden Intensity Mapping Experiment / Fast Radio Bursts (CHIME/FRB) open data releases. The purposes of this page is to be the central resource for accessing data and accompanying code snippets to get started working with the data.
 
+If you make use of these datasets for academic work, please cite the respective papers.
+
 ## Data Releases
 
 ###### [Detection of Fast Radio Bursts at Radio Frequencies Down to 400 MHz](https://arxiv.org/pdf/1901.04524.pdf)

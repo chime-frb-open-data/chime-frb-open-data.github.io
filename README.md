@@ -6,11 +6,11 @@ Welcome to Canadian Hydroden Intensity Mapping Experiment / Fast Radio Bursts (C
 
 ###### [Detection of Fast Radio Bursts at Radio Frequencies Down to 400 MHz](https://arxiv.org/pdf/1901.04524.pdf)
 
-(FRB Data)[http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0004]
+[FRB Data](http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0004)
 
 ###### [A Second Repeating Fast Radio Burst](https://arxiv.org/pdf/1901.04525.pdf)
 
-(Repeater Data)[http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0005]
+[Repeater Data](http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0005)
 
 ## Data Format
 The CHIME/FRB Experiment uses the msgpack data format to store channelized intensity data while CHIME/Pulsar Experiment uses the filterbank format.

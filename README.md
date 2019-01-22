@@ -7,11 +7,11 @@ If you make use of these datasets for academic work, please cite the respective 
 ## Data Releases
 ###### [Detection of Fast Radio Bursts at Radio Frequencies Down to 400 MHz](https://arxiv.org/abs/1901.04524)
 
-Data for the the 13 FRBs presented is this publication can be found [here](http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0004/data).
+Data for the the 13 FRBs presented is this publication can be found [here](http://www.canfar.net/citation/landing?doi=19.0004).
 
 ###### [A Second Repeating Fast Radio Burst](https://arxiv.org/abs/1901.04525)
 
-All of the repeater data for this publication can be downloaded from [here](http://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/19.0005/data).
+All of the repeater data for this publication can be downloaded from [here](http://www.canfar.net/citation/landing?doi=19.0005).
 
 ## Data Format
 The CHIME/FRB Experiment uses the msgpack data format to store channelized intensity data while CHIME/Pulsar Experiment uses the filterbank format.

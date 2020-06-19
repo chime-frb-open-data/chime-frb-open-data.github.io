@@ -13,6 +13,10 @@ Data for the the 13 FRBs presented is this publication can be found [here](http:
 
 All of the repeater data for this publication can be downloaded from [here](http://www.canfar.net/citation/landing?doi=19.0005).
 
+###### [Periodic activity from a fast radio burst source](https://arxiv.org/pdf/2001.10275.pdf)
+
+All of the bursts included in this publication can be downloaded [here](https://doi.org/10.11570/20.0002)
+
 ## Data Format
 The CHIME/FRB Experiment uses the msgpack data format to store channelized intensity data while CHIME/Pulsar Experiment uses the filterbank format.
 

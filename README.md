@@ -29,5 +29,29 @@ Filterbank data for the FRBs presented in the data release were analyzed using `
 ###### npz
 A dictionary-like object with lazy-loading of files in the zipped archive, for further reading see [official numpy documentation](https://numpy.org/doc/stable/reference/generated/numpy.load.html).
 
+Burst dynamic spectra (waterfalls) for "Periodic activity from a fast radio burst source", both from intensity and baseband data, are stored in npz files.
+
+The waterfalls from intensity data have file names "burst_*_16k_wfall.npz" and are stored at the full resolution of 16,384 frequency channels over 400 MHz with a 0.00098304-s time resolution, dedispersed to 348.82 pc cm-3. 
+
+The waterfalls derived from complex voltage (baseband) data have file names "burst_*_bb_1k_wfall.npz" and are stored at a resolution of 1,024 frequency channels over 400 MHz with time resolution and dedispersed to the DM as in Extended Data Figure 1 of the paper: {40.96, 40.96, 20.48, 81.92} us and {348.78, 348.82, 348.82, 348.86} pc cm-3. In all cases zapped channels due to RFI are replaced by `np.nan`. 
+
+Note that the bursts are too dim too see in individual frequency channels at full resolution. In the paper, we have downsampled the data in frequency for visualization.
+
+Data can be accessed and displayed in Python as, e.g.:
+
+    import matplotlib.pyplot as plt
+    import numpy as np
+    fname = "burst_9_bb_1k_wfall.npz"
+    data = np.load(fname)
+    wfall = data["wfall"]
+    dt_s = data["dt_s"]
+    center_freq_mhz = data["center_freq_mhz"]
+    df_mhz = center_freq_mhz[1] - center_freq_mhz[0]
+    plt.imshow(wfall, origin="lower", aspect="auto", interpolation="nearest", 
+               extent=(0, dt_s*wfall.shape[1], center_freq_mhz[0]-df_mhz/2., 
+               center_freq_mhz[-1]+df_mhz/2.))
+    plt.xlabel("Time [s]")
+    plt.ylabel("Frequency [MHz]")
+
 ## Support
 As a first step, make sure to read through the [issues](https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/issues?q=) to see if your specific question has already been answered. If not, open a new issue, and we would be happy to help you.

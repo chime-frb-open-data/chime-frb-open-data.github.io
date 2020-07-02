@@ -33,7 +33,7 @@ Burst dynamic spectra (waterfalls) for "Periodic activity from a fast radio burs
 
 The waterfalls from intensity data have file names `burst_*_16k_wfall.npz` and are stored at the full resolution of 16,384 frequency channels over 400 MHz with a `0.00098304s` time resolution, dedispersed to 348.82 pc cm-3. 
 
-The waterfalls derived from complex voltage (baseband) data have file names `burst_*_bb_1k_wfall.npz` and are stored at a resolution of 1,024 frequency channels over 400 MHz with time resolution and dedispersed to the DM as in Extended Data Figure 1 of the paper: {40.96, 40.96, 20.48, 81.92} us and {348.78, 348.82, 348.82, 348.86} pc cm-3. In all cases zapped channels due to RFI are replaced by `np.nan`. 
+The waterfalls derived from complex voltage (baseband) data have file names `burst_*_bb_1k_wfall.npz` and are stored at a resolution of 1,024 frequency channels over 400 MHz with time resolution and dedispersed to the DM as in `Extended Data Figure 1` of the paper: {40.96, 40.96, 20.48, 81.92}us and {348.78, 348.82, 348.82, 348.86} pc cm-3. In all cases zapped channels due to RFI are replaced by `np.nan`.
 
 Note that the bursts are too dim too see in individual frequency channels at full resolution. In the paper, we have downsampled the data in frequency for visualization.
 

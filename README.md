@@ -26,5 +26,8 @@ The CHIME/FRB Experiment uses the msgpack data format to store channelized inten
 ###### filterbank
 Filterbank data for the FRBs presented in the data release were analyzed using `presto` and `sigproc`.
 
-## Support or Contact
-For any further information or questions please email charanjot.brar@mcgill.ca
+###### npz
+A dictionary-like object with lazy-loading of files in the zipped archive, for further reading see [official numpy documentation](https://numpy.org/doc/stable/reference/generated/numpy.load.html).
+
+## Support
+As a first step, make sure to read through the [issues](https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/issues?q=) to see if your specific question has already been answered. If not, open a new issue, and we would be happy to help you.

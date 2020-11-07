@@ -17,8 +17,11 @@ All of the repeater data for this publication can be downloaded from [here](http
 
 All of the bursts included in this publication can be downloaded [here](https://doi.org/10.11570/20.0002)
 
+###### [A bright millisecond-duration radio burst from a Galactic magnetar](https://arxiv.org/abs/2005.10324)
+The data for galactic magnetar bursts can be downloaded from [here](https://doi.org/10.11570/20.0006)
+
 ## Data Format
-The CHIME/FRB Experiment uses the msgpack data format to store channelized intensity data while CHIME/Pulsar Experiment uses the filterbank format.
+The CHIME/FRB Experiment either the `msgpack` data format to store raw channelized intensity data, `npz` file format for processed intensity data and the CHIME/Pulsar Experiment uses the `filterbank` data format.
 
 ###### msgpack
 `msgpack` data is the beamformed and channelized intensity data which consists of 16k frequency channels at 1-ms cadence. This data is scaled, offset, and packed into 8-bit integers files each consisting of 1.00663296s worth of data. For more information refer to [The CHIME Fast Radio Burst Project: System Overview](https://arxiv.org/pdf/1803.11235.pdf). In order to read and uncompress the msgpack data into numpy arrays, the [cfod](https://github.com/chime-frb-open-data/chime-frb-open-data) python package can be used.

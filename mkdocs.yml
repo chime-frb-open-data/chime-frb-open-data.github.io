@@ -1,0 +1,74 @@
+site_name: CHIME/FRB Open Data
+site_author: Shiny Brar
+site_description: Open Data Releases for CHIME/FRB
+repo_name: chime-frb-open-data/chime-frb-open-data.github.io
+repo_url: https://github.com/chime-frb-open-data/chime-frb-open-data.github.io
+copyright: Copyright &copy; 2016 - 2020 CHIME/FRB Collaboration
+
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: indigo
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  language: en
+  features:
+    - tabs
+    - instant
+  logo: chime-frb-logo-small.png
+
+plugins:
+  - search
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true
+      linenums_style: pymdownx.inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Get Started: index.md
+  - Data:
+    - Releases: data-releases.md
+    - Formats: data-formats.md
+  - Code: code.md
+  # - Papers:
+  #   - Scientific: scientific.md
+  #   - Technical: technical.md
+  - Support: support.md

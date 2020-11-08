@@ -19,7 +19,7 @@ theme:
   features:
     - tabs
     - instant
-  logo: chime-frb-logo.png
+  logo: chime-frb-logo-small.png
 
 plugins:
   - search
@@ -64,7 +64,11 @@ markdown_extensions:
 
 nav:
   - Get Started: index.md
-  - Data Releases: data-releases.md
-  - Data Formats: data-formats.md
-  - Code Snippets: code.md
+  - Data:
+    - Releases: data-releases.md
+    - Formats: data-formats.md
+  - Code: code.md
+  # - Papers:
+  #   - Scientific: scientific.md
+  #   - Technical: technical.md
   - Support: support.md

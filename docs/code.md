@@ -44,7 +44,7 @@ The waterfalls derived from complex voltage (baseband) data have file names `bur
 Note that the bursts are too dim too see in individual frequency channels at full resolution. In the paper, we have downsampled the data in frequency for visualization.
 
 Data can be accessed and displayed in Python as, e.g.:
-???+ example
+??? example
     ```python
     import matplotlib.pyplot as plt
     import numpy as np
@@ -77,7 +77,7 @@ The data have a `1024` frequency channels over 400 MHz with time resolution of
 channels due to RFI are replaced by `np.nan`. Data can be accessed and 
 displayed in Python as using the following code,
 
-???+ example
+??? example
     ```python
         import glob
         import matplotlib.pyplot as plt
@@ -96,7 +96,7 @@ displayed in Python as using the following code,
 
 The NumPy arrays stored in the npz files are:
 
-???+ hint
+??? hint
     - `center_frequencies`: center frequency of each channel, in MHz
     - `center_time`: center time of each sample, in s
     - `df`: channel bandwidth, in MHz
@@ -120,7 +120,7 @@ This data has been recorded with the 10-m dish at the Algonquin Radio Observator
 
 The NumPy arrays stored in the npz file are:
 
-???+ hint
+??? hint
     - `V` : coherently dedispersed complex voltages, with shape (nt, nf, npol)
     - `start_time` : start time of the observation, referenced to 800. MHz
     - `end_time` : end time of the observation, referenced to 800. MHz
@@ -134,7 +134,7 @@ CHIME, `332.7206 pc cm-3`.
 Below is an example of reading in complex voltages, determining Stokes 
 parameters, and plotting the total intensity:
 
-???+ example
+??? example
     ```python
     import matplotlib.pyplot as plt
     import numpy as np

@@ -13,3 +13,8 @@ The purposes of this website is to be the central resource for providing access 
 [Support :material-account-supervisor:](support.md){: .md-button .md-button--primary } 
 </center>
 
+<br>
+<br>
+
+???+ note
+     You may use the data presented in this website for publications; however, we ask that you cite the relevant CHIME/FRB Collaboration papers. 

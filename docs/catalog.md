@@ -1,4 +1,4 @@
-## Read in CHIME/FRB Catalog 1 Data
+If you want to take a closer look at the CHIME/FRB Catalog 1 Data, you'll need to know how to read it in. We've made both a CSV and FITS file version of Catalog 1 data available. You'll need the Python packages: **numpy** and **pandas** to open the CSV version or just **astropy** to open the FITS version. See below for sample scripts to open both versions. 
 
 ??? Example
 
@@ -32,3 +32,5 @@
         # The Catalog 1 Data now lives in hdul. You can view more information about the file with: 
             hdul.info()        
         ```
+
+Tutorial provided by Alice Curtin and Sabrina Berger.

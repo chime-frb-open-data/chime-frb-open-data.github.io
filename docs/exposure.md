@@ -1,4 +1,9 @@
-## Read in Exposure Map Data
+Below we provide a sample script for creating an exposure map of the Catalog 1 CHIME/FRB Data. This sample script uses the healpy package to project the exposure map onto the 2D plane. You'll need the following Python packages for this example: **numpy**, **matplotlib**, **healpy**, and **astropy**.
+The sample script will show you how to create both a high resolution and low resolution exposure map, top and bottom plots respectively.
+
+![high res image](static/exposure/hires.png)
+
+![low res image](static/exposure/lowerres.png)
 
 ??? Example
 
@@ -34,7 +39,6 @@
         
         # Plotting
         hp.mollview(hpxmap, coord=['C','G'], norm='log', unit="Hours")
-        ![high res image](hires.png)
         # Check exposure time in hours for R1 repeater
         coord = SkyCoord("05:31:58.70", "+33:08:52.5", frame='icrs', unit = u.deg)
         print("Exposure (in hours): %.2f"%hpxmap[hp.ang2pix(nside, coord.ra.deg, coord.dec.deg,  lonlat=True)])
@@ -46,7 +50,6 @@
         # Degrade healpix resolution to nside_out
         hpxmap_dg = hp.ud_grade(hpxmap, nside_out) 
         hp.mollview(hpxmap_dg, coord=['C','G'], norm='log', unit="Hours")
-        ![low res image](lowerres.png)
         ```
 
 ??? hint
@@ -56,3 +59,5 @@
     - `hpxmap` Your HEALpix map will live here.
     - `hpxmap_dg` Your downgraded HEALpix map will live here.
     - `hp.mollview` Plots a Mollweide projection of your HEALpix map.
+
+Tutorial provided by Dr. Pragya Chawla.

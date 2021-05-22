@@ -71,4 +71,10 @@ nav:
   # - Papers:
   #   - Scientific: scientific.md
   #   - Technical: technical.md
+  - Tutorials Using Catalog 1 Data :
+    - Read in Catalog: catalog.md
+    - Make an Exposure Map: exposure.md
+    - Make a Localization Plot: localization.md
+    - Applying Bandpass Correction: bandpass.md
+    - Make a Waterfall Plot: waterfall.md
   - Support: support.md

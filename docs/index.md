@@ -1,4 +1,4 @@
-![](chime-frb-logo.png){: style="height:120px;width:120px", align="left"}
+![](static/chime-frb-logo.png){: style="height:120px;width:120px", align="left"}
 
 
 Welcome to open data releases for the [Canadian Hydroden Intensity Mapping Experiment](https://chime-experiment.ca/en) / [Fast Radio Bursts](https://chime-experiment.ca/en#a5).

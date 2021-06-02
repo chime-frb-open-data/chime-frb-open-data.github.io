@@ -4,9 +4,8 @@ You'll need the following Python packages to complete this tutorial: **h5py**, *
 ## Loading in localization data
 The localization data are stored in an HDF5 format. We include various views of the underlying probability distribution, which should be useful for different situations (e.g. healpix maps, contours lists). 
 
-??? Example
+???+ Example
 
-    === "Overview"
     ```python
     # Load in packages
     import h5py as h5
@@ -20,9 +19,9 @@ The localization data are stored in an HDF5 format. We include various views of 
     # The following function just summarizes the HDF5 file structure:
     def describe(group, recurse=False):
         """ Prints info on the contents of an hdf5 group """
-    
+
         print(group.name)
-        
+
         # First print header-like attributes (if exist)
         if group.attrs:
             print('\n  attrs: {')
@@ -52,13 +51,14 @@ The localization data are stored in an HDF5 format. We include various views of 
 ## ROOT
 The attributes at the root level include some basic parameters: TNS name, the positional values reported in the Catalog table, coordinate system details, and galactic coordinates for convenience.
 
-??? Example
-    === "ROOT"
+???+ Example "ROOT"
+
     ```
     describe(f['/']) # See hint 1
-    f['healpix'].attrs['comments'] # See hint 2
+    f['healpix'].attrs['comments'] # See hints below
     ```
-??? Hint 1
+
+??? Hint
 
     ```
     The output from the first line above should be:
@@ -85,7 +85,8 @@ The attributes at the root level include some basic parameters: TNS name, the po
     projection/
     contours/
     ```
-??? Hint 2
+
+??? Hint
 
     ```
     The output from the second line above should be:
@@ -98,9 +99,8 @@ The attributes at the root level include some basic parameters: TNS name, the po
 ## HEALPix
 A sparse representation of a HEALPix map, where pixels with effectively zero probability have been discarded (typically ~99.99% of the sky). The same resolution is used as the exposure maps (nside = 4096, giving a pixel area of ~0.7 square arcmins).
 
-??? Example
+???+ Example "HEALPix"
 
-    === "HEALPix"
     ```
     describe(f['/healpix'])
     ```
@@ -125,10 +125,10 @@ A sparse representation of a HEALPix map, where pixels with effectively zero pro
       CL: (174835,) float32
     ```
 
-### Example usage of HEALPix - sampling the region
-??? Example
+### Sampling the Region
 
-    === "Example usage of HEALPix"
+
+???+ Example "Example usage of HEALPix"
     ```
     nside = f['healpix'].attrs['nside']
     ipix, CL = f['healpix/ipix'][()], f['healpix/CL'][()]
@@ -144,12 +144,13 @@ A sparse representation of a HEALPix map, where pixels with effectively zero pro
 
 ### PROJECTION
 A Gnomonic projection of the HEALPix map is included for convenient visualization. This projection method projects from the sphere onto a tangent plane, where the tangent point is centered on the target location. This is an appropriate choice given the ~degree scale of these uncertainty regions. The tangent plane that defines the projection is centered on the highest S/N beam.
-??? Example
 
-    === "PROJECTION"
+???+ Example "PROJECTION"
+
     ```
     describe(f['/projection'])
     ```
+
 ??? Hint
 
     ```
@@ -172,47 +173,50 @@ A Gnomonic projection of the HEALPix map is included for convenient visualizatio
       data: (120, 600) float32
     ```
 
-### Example usage - making a plot¶
-??? Example
+### Making a plot¶
 
-    ```
-        hdr = f['projection'].attrs
-        CL = f['projection/data'][:]
-        extent = np.array([-hdr['xsize']/2, hdr['xsize']/2, 
-                           -hdr['ysize']/2, hdr['ysize']/2])*hdr['reso']/60
-        
-        plt.rc('font', family='serif', size=14)
-        plt.figure(figsize=(10, 4))
-        
-        # Note: RA increases to the left!
-        im = plt.imshow(CL, vmin=0, origin='lower',
-                        extent=extent, cmap='magma')
-        plt.contour(CL, levels=[0.68, 0.95], linestyles=['-', '--'], 
-                    colors='k', linewidths=2, extent=extent)
-        
-        plt.colorbar(im, pad=0.25, shrink=0.4, orientation='horizontal',
-                     label='Confidence Level')
-        plt.arrow(2.4, -0.4, 0, 0.2, head_width=0.04, color='k')
-        plt.text(2.39, -0.1, 'N', ha='center', size=10)
-        plt.arrow(2.4, -0.4, -0.2, 0., head_width=0.04, color='k')
-        plt.text(2.1, -0.4, 'E', va='center', ha='right', size=10)
-        plt.title('Centered @ %.3f, %.2f' % (hdr['clon'], hdr['clat']))
-        plt.xlabel('dx (deg)')
-        plt.ylabel('dy (deg)')
-        
+???+ Example
+
+    ```python
+    hdr = f['projection'].attrs
+    CL = f['projection/data'][:]
+    extent = np.array([-hdr['xsize']/2, hdr['xsize']/2, 
+                        -hdr['ysize']/2, hdr['ysize']/2])*hdr['reso']/60
+    
+    plt.rc('font', family='serif', size=14)
+    plt.figure(figsize=(10, 4))
+    
+    # Note: RA increases to the left!
+    im = plt.imshow(CL, vmin=0, origin='lower',
+                    extent=extent, cmap='magma')
+    plt.contour(CL, levels=[0.68, 0.95], linestyles=['-', '--'], 
+                colors='k', linewidths=2, extent=extent)
+    
+    plt.colorbar(im, pad=0.25, shrink=0.4, orientation='horizontal',
+                    label='Confidence Level')
+    plt.arrow(2.4, -0.4, 0, 0.2, head_width=0.04, color='k')
+    plt.text(2.39, -0.1, 'N', ha='center', size=10)
+    plt.arrow(2.4, -0.4, -0.2, 0., head_width=0.04, color='k')
+    plt.text(2.1, -0.4, 'E', va='center', ha='right', size=10)
+    plt.title('Centered @ %.3f, %.2f' % (hdr['clon'], hdr['clat']))
+    plt.xlabel('dx (deg)')
+    plt.ylabel('dy (deg)')
     ```
 Your plot generated from the above script should look similar to this plot:
 ![localization plot](static/localization/local.png)
 
 ### Contours
-??? Example
+
+???+ Example
 
     ```
     describe(f['/contours'], recurse=True)
     ```
+
 ??? Hint
     
     The above example's output should look like the following:
+
     ```
     /contours
     
@@ -253,30 +257,31 @@ Your plot generated from the above script should look similar to this plot:
       A: (2, 41) float32
       B: (2, 54) float32
       C: (2, 48) float32
-    
+
     ```
 
-### Example usage - making a contour plot¶
-??? Example
+### Making a Contour Plot¶
+
+???+ Example
     
-    ```
-        # example 0: getting points
-        ra, dec = f['contours/68/A']
-        
-        # example 2: plotting contours
-        plt.figure(figsize=(10,2))
-        
-        for name, contour in f['contours/68'].items():
-            contour = contour[:]
-            plt.plot(*contour)
-            plt.plot(*contour.mean(1), 'wo', mec='k', ms=20, alpha=0.5)
-            plt.text(*contour.mean(1), s=name, ha='center', va='center')
-        for contour in f['contours/95'].values():
-            plt.plot(*contour[:], '--')
-        
-        plt.xlim(*plt.xlim()[::-1])
-        plt.xlabel('R.A. (deg)')
-        plt.ylabel('Dec. (deg)')
+    ```python
+    # example 0: getting points
+    ra, dec = f['contours/68/A']
+    
+    # example 2: plotting contours
+    plt.figure(figsize=(10,2))
+    
+    for name, contour in f['contours/68'].items():
+        contour = contour[:]
+        plt.plot(*contour)
+        plt.plot(*contour.mean(1), 'wo', mec='k', ms=20, alpha=0.5)
+        plt.text(*contour.mean(1), s=name, ha='center', va='center')
+    for contour in f['contours/95'].values():
+        plt.plot(*contour[:], '--')
+    
+    plt.xlim(*plt.xlim()[::-1])
+    plt.xlabel('R.A. (deg)')
+    plt.ylabel('Dec. (deg)')
     ```
 
 Your plot generated from the above script should look similar to this plot:

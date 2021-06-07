@@ -1,1 +1,0 @@
-As a first step, head over to the CHIME/FRB Community and make sure to read through the [issues](https://github.com/chime-frb-open-data/community/issues) to see if your specific question has already been answered. If not, open a new issue, and we would be happy to help you.

@@ -8,9 +8,11 @@ The purposes of this website is to be the central resource for providing access 
 <br>
 <br>
 <center>
-[Data Releases :material-download:](data-releases.md){: .md-button .md-button--primary } 
-[Code Snippets :material-code-braces:](code.md){: .md-button .md-button--primary } 
-[Support :material-account-supervisor:](support.md){: .md-button .md-button--primary } 
+[:material-download: Data Releases](data-releases.md){: .md-button .md-button--primary } 
+[:material-code-braces: Tutorials](code.md){: .md-button .md-button--primary } 
+[:fontawesome-brands-python: Package](https://github.com/chime-frb-open-data/chime-frb-open-data){: .md-button .md-button--primary }
+[:material-account-supervisor: Support](https://github.com/chime-frb-open-data/community){: .md-button .md-button--primary }
+
 </center>
 
 <br>

@@ -68,14 +68,15 @@ nav:
   - Data:
     - Releases: data-releases.md
     - Formats: data-formats.md
-  - Code: code.md
+  # - Code: code.md
   # - Papers:
   #   - Scientific: scientific.md
   #   - Technical: technical.md
   - Tutorials :
-    - Read in Catalog: catalog.md
-    - Make an Exposure Map: exposure.md
-    - Make a Localization Plot: localization.md
-    - Applying Bandpass Correction: bandpass.md
-    - Make a Waterfall Plot: waterfall.md
-  - Support: support.md
+    - Catalog 1:
+      - Read in Catalog: catalog.md
+      - Make an Exposure Map: exposure.md
+      - Make a Localization Plot: localization.md
+      - Applying Bandpass Correction: bandpass.md
+      - Make a Waterfall Plot: waterfall.md
+    - Previous Releases: code.md

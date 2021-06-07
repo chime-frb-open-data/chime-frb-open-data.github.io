@@ -19,7 +19,8 @@ theme:
   features:
     - tabs
     - instant
-  logo: chime-frb-logo-small.png
+  logo: static/chime-frb-logo-small.png
+  favicon: material/chess
 
 plugins:
   - search
@@ -71,4 +72,10 @@ nav:
   # - Papers:
   #   - Scientific: scientific.md
   #   - Technical: technical.md
+  - Tutorials :
+    - Read in Catalog: catalog.md
+    - Make an Exposure Map: exposure.md
+    - Make a Localization Plot: localization.md
+    - Applying Bandpass Correction: bandpass.md
+    - Make a Waterfall Plot: waterfall.md
   - Support: support.md

@@ -1,0 +1,914 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open Data Releases for CHIME/FRB">
+      
+      
+      
+        <meta name="author" content="Shiny Brar">
+      
+      
+      <link rel="icon" href="material/chess">
+      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>Make a Localization Plot - CHIME/FRB Open Data</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#loading-in-localization-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+      
+  <img src="static/chime-frb-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CHIME/FRB Open Data
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Make a Localization Plot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chime-frb-open-data/chime-frb-open-data.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+      
+  <img src="static/chime-frb-logo-small.png" alt="logo">
+
+    </a>
+    CHIME/FRB Open Data
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chime-frb-open-data/chime-frb-open-data.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Data
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data-releases.html" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="data-formats.html" class="md-nav__link">
+        Formats
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Catalog 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Catalog 1" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Catalog 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="catalog.html" class="md-nav__link">
+        Read in Catalog
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="exposure.html" class="md-nav__link">
+        Make an Exposure Map
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Make a Localization Plot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="localization.html" class="md-nav__link md-nav__link--active">
+        Make a Localization Plot
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-in-localization-data" class="md-nav__link">
+    Loading in localization data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ROOT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#healpix" class="md-nav__link">
+    HEALPix
+  </a>
+  
+    <nav class="md-nav" aria-label="HEALPix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling-the-region" class="md-nav__link">
+    Sampling the Region
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projection" class="md-nav__link">
+    PROJECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-plot" class="md-nav__link">
+    Making a plot¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contours" class="md-nav__link">
+    Contours
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-contour-plot" class="md-nav__link">
+    Making a Contour Plot¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="bandpass.html" class="md-nav__link">
+        Applying Bandpass Correction
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="waterfall.html" class="md-nav__link">
+        Make a Waterfall Plot
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="code.html" class="md-nav__link">
+        Previous Releases
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-in-localization-data" class="md-nav__link">
+    Loading in localization data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#root" class="md-nav__link">
+    ROOT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#healpix" class="md-nav__link">
+    HEALPix
+  </a>
+  
+    <nav class="md-nav" aria-label="HEALPix">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sampling-the-region" class="md-nav__link">
+    Sampling the Region
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projection" class="md-nav__link">
+    PROJECTION
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-plot" class="md-nav__link">
+    Making a plot¶
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contours" class="md-nav__link">
+    Contours
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-a-contour-plot" class="md-nav__link">
+    Making a Contour Plot¶
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/edit/master/docs/localization.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Make a Localization Plot</h1>
+                
+                <p>Localizations are key to understanding FRBs and this tutorial will show you how to plot localizations from Catalog 1. 
+You'll need the following Python packages to complete this tutorial: <strong>h5py</strong>, <strong>numpy</strong>, <strong>healpy</strong>, and <strong>matplotlib</strong>.</p>
+<h2 id="loading-in-localization-data">Loading in localization data<a class="headerlink" href="#loading-in-localization-data" title="Permanent link">&para;</a></h2>
+<p>The localization data are stored in an HDF5 format. We include various views of the underlying probability distribution, which should be useful for different situations (e.g. healpix maps, contours lists). </p>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="c1"># Load in packages</span>
+<span class="kn">import</span> <span class="nn">h5py</span> <span class="k">as</span> <span class="nn">h5</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">healpy</span> <span class="k">as</span> <span class="nn">hp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Load in the HDF5 file.</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">h5</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">&#39;example.h5&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># The following function just summarizes the HDF5 file structure:</span>
+<span class="k">def</span> <span class="nf">describe</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">recurse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Prints info on the contents of an hdf5 group &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="c1"># First print header-like attributes (if exist)</span>
+    <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">  attrs: {&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="s1">&#39;history&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    </span><span class="si">%s</span><span class="s1">:&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;      &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    </span><span class="si">%s</span><span class="s1">:&#39;</span> <span class="o">%</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">group</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  }&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Then print constituent groups &amp; datasets</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">group</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">h5</span><span class="o">.</span><span class="n">Group</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">recurse</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+                <span class="n">describe</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &#39;</span> <span class="o">+</span> <span class="n">key</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<h2 id="root">ROOT<a class="headerlink" href="#root" title="Permanent link">&para;</a></h2>
+<p>The attributes at the root level include some basic parameters: TNS name, the positional values reported in the Catalog table, coordinate system details, and galactic coordinates for convenience.</p>
+<details class="example" open="open"><summary>ROOT</summary><div class="highlight"><pre><span></span><code>describe(f[&#39;/&#39;]) # See hint 1
+f[&#39;healpix&#39;].attrs[&#39;comments&#39;] # See hints below
+</code></pre></div>
+</details>
+<details class="hint"><summary>Hint</summary><div class="highlight"><pre><span></span><code>The output from the first line above should be:
+  attrs: {
+    tns_name: FRB20181224D
+    ra: 182.45
+    ra_hms: 12h09m48s
+    ra_error: 0.197
+    dec: 54.85
+    dec_dms: 54d51m00s
+    dec_error: 0.213
+    glon: 135.42455191200924
+    glat: 61.256833554798746
+    frame: ICRS
+    epoch: J2000
+    units: degrees
+    comments:
+      Reported errors are at the 68% CL.
+      R.A. errors have been scaled by cos(dec).
+      Regions reported here are for the mainlobe island.
+      See further data products for sidelobe islands.
+  }
+healpix/
+projection/
+contours/
+</code></pre></div>
+</details>
+<details class="hint"><summary>Hint</summary><div class="highlight"><pre><span></span><code>The output from the second line above should be:
+array([&#39;Sparse representation of a HEALPix map.&#39;,
+       &#39;ipix := pixel indices (given nside and ordering scheme).&#39;,
+       &#39;CL := confidence level. Any pixel with a CL less than&#39;,
+       &#39;0.XX is within the XX% credible region.&#39;], dtype=object)
+</code></pre></div>
+</details>
+<h2 id="healpix">HEALPix<a class="headerlink" href="#healpix" title="Permanent link">&para;</a></h2>
+<p>A sparse representation of a HEALPix map, where pixels with effectively zero probability have been discarded (typically ~99.99% of the sky). The same resolution is used as the exposure maps (nside = 4096, giving a pixel area of ~0.7 square arcmins).</p>
+<details class="example" open="open"><summary>HEALPix</summary><div class="highlight"><pre><span></span><code>describe(f[&#39;/healpix&#39;])
+</code></pre></div>
+</details>
+<details class="hint"><summary>Hint</summary><p>The output from the line above should be.
+<div class="highlight"><pre><span></span><code>/healpix
+
+  attrs: {
+    nside: 4096
+    ordering: nested
+    comments:
+      Sparse representation of a HEALPix map.
+      ipix := pixel indices (given nside and ordering scheme).
+      CL := confidence level. Any pixel with a CL less than
+      0.XX is within the XX% credible region.
+  }
+
+  ipix: (174835,) int64
+  CL: (174835,) float32
+</code></pre></div></p>
+</details>
+<h3 id="sampling-the-region">Sampling the Region<a class="headerlink" href="#sampling-the-region" title="Permanent link">&para;</a></h3>
+<details class="example" open="open"><summary>Example usage of HEALPix</summary><div class="highlight"><pre><span></span><code>nside = f[&#39;healpix&#39;].attrs[&#39;nside&#39;]
+ipix, CL = f[&#39;healpix/ipix&#39;][()], f[&#39;healpix/CL&#39;][()]
+
+# example 1: get locations of pixels within 90% confidence bounds
+# note that initializing the full healpix map is not necessary here
+ra, dec = hp.pix2ang(nside, ipix[CL &lt; 0.9], nest=True, lonlat=True)
+
+# example 2: sampling pixels with weighting
+sampled = np.random.choice(ipix, 30000, p=(1-CL)/(1-CL).sum())
+ra, dec = hp.pix2ang(nside, sampled, nest=True, lonlat=True)    
+</code></pre></div>
+</details>
+<h3 id="projection">PROJECTION<a class="headerlink" href="#projection" title="Permanent link">&para;</a></h3>
+<p>A Gnomonic projection of the HEALPix map is included for convenient visualization. This projection method projects from the sphere onto a tangent plane, where the tangent point is centered on the target location. This is an appropriate choice given the ~degree scale of these uncertainty regions. The tangent plane that defines the projection is centered on the highest S/N beam.</p>
+<details class="example" open="open"><summary>PROJECTION</summary><div class="highlight"><pre><span></span><code>describe(f[&#39;/projection&#39;])
+</code></pre></div>
+</details>
+<details class="hint"><summary>Hint</summary><div class="highlight"><pre><span></span><code>/projection
+
+  attrs: {
+    clon: 182.44863891601562
+    clon_hms: 12h09m48s
+    clat: 54.858444213867195
+    clat_dms: 54d51m30s
+    reso: 0.5
+    xsize: 600
+    ysize: 120
+    comments:
+      Gnomonic projection of the HEALPix map,
+      centered around the beam with the highest S/N.
+      Made  with healpy.projector.GnomonicProj
+  }
+
+  data: (120, 600) float32
+</code></pre></div>
+</details>
+<h3 id="making-a-plot">Making a plot¶<a class="headerlink" href="#making-a-plot" title="Permanent link">&para;</a></h3>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="n">hdr</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;projection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">attrs</span>
+<span class="n">CL</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;projection/data&#39;</span><span class="p">][:]</span>
+<span class="n">extent</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;xsize&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;xsize&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> 
+                    <span class="o">-</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;ysize&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;ysize&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">])</span><span class="o">*</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;reso&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">60</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Note: RA increases to the left!</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">CL</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">CL</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.68</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">],</span> <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">],</span> 
+            <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Confidence Level&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mf">2.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.39</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mf">2.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">2.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Centered @ </span><span class="si">%.3f</span><span class="s1">, </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;clon&#39;</span><span class="p">],</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;clat&#39;</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;dx (deg)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;dy (deg)&#39;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>Your plot generated from the above script should look similar to this plot:
+<img alt="localization plot" src="static/localization/local.png" /></p>
+<h3 id="contours">Contours<a class="headerlink" href="#contours" title="Permanent link">&para;</a></h3>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code>describe(f[&#39;/contours&#39;], recurse=True)
+</code></pre></div>
+</details>
+<details class="hint"><summary>Hint</summary><p>The above example's output should look like the following:</p>
+<div class="highlight"><pre><span></span><code>/contours
+
+  attrs: {
+    comments:
+      (R.A., Dec.) contours of common confidence intervals.
+      Islands (labelled ABC...) are ordered with increasing R.A.
+      Contours are extracted from the Gnomonic projection,
+      and have been simplified using the Ramer-Douglas-Peucker
+      algorithm (with an epsilon parameter of 0.2 pixels).
+  }
+
+------------------------------------------------------------
+/contours/50
+
+  A: (2, 22) float32
+  B: (2, 30) float32
+  C: (2, 38) float32
+
+------------------------------------------------------------
+/contours/68
+
+  A: (2, 24) float32
+  B: (2, 28) float32
+  C: (2, 34) float32
+  D: (2, 43) float32
+
+------------------------------------------------------------
+/contours/90
+
+  A: (2, 34) float32
+  B: (2, 51) float32
+  C: (2, 46) float32
+
+------------------------------------------------------------
+/contours/95
+
+  A: (2, 41) float32
+  B: (2, 54) float32
+  C: (2, 48) float32
+</code></pre></div>
+</details>
+<h3 id="making-a-contour-plot">Making a Contour Plot¶<a class="headerlink" href="#making-a-contour-plot" title="Permanent link">&para;</a></h3>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="c1"># example 0: getting points</span>
+<span class="n">ra</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;contours/68/A&#39;</span><span class="p">]</span>
+
+<span class="c1"># example 2: plotting contours</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;contours/68&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">contour</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[:]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">contour</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">contour</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;wo&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">*</span><span class="n">contour</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;contours/95&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">contour</span><span class="p">[:],</span> <span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">*</span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;R.A. (deg)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Dec. (deg)&#39;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>Your plot generated from the above script should look similar to this plot:
+<img alt="contour plot" src="static/localization/contours.png" /></p>
+<p>Tutorial provided by Alex Josephy.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="exposure.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Make an Exposure Map" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Make an Exposure Map
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="bandpass.html" class="md-footer__link md-footer__link--next" aria-label="Next: Applying Bandpass Correction" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Applying Bandpass Correction
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 CHIME/FRB Collaboration
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
+      
+    
+  </body>
+</html>

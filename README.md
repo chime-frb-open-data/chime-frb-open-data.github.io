@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://chime-frb-open-data.github.io"><img src="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/blob/master/docs/chime-frb-logo.png?raw=true" alt="Maestro" width="25%"></a>
+  <a href="https://chime-frb-open-data.github.io"><img src="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/blob/79d7c2d574a6c849125583395f5442333630222d/docs/static/chime-frb-logo.png" alt="" width="25%"></a>
   <br>
   CHIME/FRB Open Data
   <br>

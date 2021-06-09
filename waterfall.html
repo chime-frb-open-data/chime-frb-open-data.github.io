@@ -13,8 +13,8 @@
         <meta name="author" content="Shiny Brar">
       
       
-      <link rel="icon" href="../material/chess">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
+      <link rel="icon" href="material/chess">
+      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.875de78c.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -59,7 +59,7 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -78,9 +78,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+    <a href="index.html" title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
       
-  <img src="../static/chime-frb-logo-small.png" alt="logo">
+  <img src="static/chime-frb-logo-small.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -170,9 +170,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+    <a href="index.html" title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
       
-  <img src="../static/chime-frb-logo-small.png" alt="logo">
+  <img src="static/chime-frb-logo-small.png" alt="logo">
 
     </a>
     CHIME/FRB Open Data
@@ -201,7 +201,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="index.html" class="md-nav__link">
         Get Started
       </a>
     </li>
@@ -237,7 +237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-releases/" class="md-nav__link">
+      <a href="data-releases.html" class="md-nav__link">
         Releases
       </a>
     </li>
@@ -249,7 +249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data-formats/" class="md-nav__link">
+      <a href="data-formats.html" class="md-nav__link">
         Formats
       </a>
     </li>
@@ -316,7 +316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../catalog/" class="md-nav__link">
+      <a href="catalog.html" class="md-nav__link">
         Read the Catalog
       </a>
     </li>
@@ -328,7 +328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../exposure/" class="md-nav__link">
+      <a href="exposure.html" class="md-nav__link">
         Make an Exposure Map
       </a>
     </li>
@@ -340,7 +340,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../localization/" class="md-nav__link">
+      <a href="localization.html" class="md-nav__link">
         Make a Localization Plot
       </a>
     </li>
@@ -366,7 +366,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="waterfall.html" class="md-nav__link md-nav__link--active">
         Make a Waterfall Plot
       </a>
       
@@ -451,7 +451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../code/" class="md-nav__link">
+      <a href="code.html" class="md-nav__link">
         Previous Releases
       </a>
     </li>
@@ -780,7 +780,7 @@ print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quo
 <div class="highlight"><pre><span></span><code><span class="c1">#savefigure</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_wfall.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eventname</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>      <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Waterfall" src="../static/wfall.png" /></p>
+<p><img alt="Waterfall" src="static/wfall.png" /></p>
 </details>
 <h2 id="plotting-calibrated-data">Plotting Calibrated Data<a class="headerlink" href="#plotting-calibrated-data" title="Permanent link">&para;</a></h2>
 <p>Within the <code>hdf5</code> file is the calibrated waterfall data, allowing one to plot the data as measured in Janskys.</p>
@@ -816,7 +816,7 @@ print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quo
 <span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency [MHz]&quot;</span><span class="p">)</span>
 <span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Flux [Jy]&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="CalWaterfall" src="../static/cal_wfall.png" /></p>
+<p><img alt="CalWaterfall" src="static/cal_wfall.png" /></p>
 </details>
                 
               
@@ -836,7 +836,8 @@ print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quo
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href="../localization/" class="md-footer__link md-footer__link--prev" rel="prev">
+        
+        <a href="localization.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Make a Localization Plot" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -851,7 +852,8 @@ print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quo
         </a>
       
       
-        <a href="../code/" class="md-footer__link md-footer__link--next" rel="next">
+        
+        <a href="code.html" class="md-footer__link md-footer__link--next" aria-label="Next: Previous Releases" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -890,10 +892,10 @@ print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quo
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.34eae1b6.min.js"></script>
+      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
       
     
   </body>

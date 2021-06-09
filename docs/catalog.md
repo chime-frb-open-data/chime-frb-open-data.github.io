@@ -1,8 +1,11 @@
-If you want to take a closer look at the CHIME/FRB Catalog 1 Data, you'll need to know how to read it in. We've made both a CSV and FITS file version of Catalog 1 data available. You'll need the Python packages: **numpy** and **pandas** to open the CSV version or just **astropy** to open the FITS version. See below for sample scripts to open both versions. 
+*Authors: Alice Curtin, Sabrina Berger*
 
-???+ Example
+In order to take a closer look at the CHIME/FRB Catalog Data download it from our [official website](https://chime-frb.ca) which is updated regularly.
+The catalog data is available in *CSV* and *FITS* file formats.
 
-    === "Read in CSV version"
+???+ Example "Read in CHIME/FRB Catalog"
+
+    === "Pandas Dataframe"
 
         ```python
         import numpy as np
@@ -21,7 +24,7 @@ If you want to take a closer look at the CHIME/FRB Catalog 1 Data, you'll need t
         print(df.keys())
         ```
 
-    === "Read in FITS version"
+    === "FITS"
 
         ```python
         # use the fits file reader in astropy
@@ -33,4 +36,44 @@ If you want to take a closer look at the CHIME/FRB Catalog 1 Data, you'll need t
             hdul.info()        
         ```
 
-Tutorial provided by Alice Curtin and Sabrina Berger.
+In addition to downloading the catalog manually, it is also availaible through the open source [CHIME/FRB Open Data](https://github.com/chime-frb-open-data/chime-frb-open-data) python package. 
+
+???+ info ":fontawesome-brands-python: cfod"
+
+    
+    === "Dictionary"
+
+        ```python
+        from cfod import catalog
+        data = catalog.as_dict()
+        ```
+    
+    === "JSON"
+
+        ```python
+        from cfod import catalog
+        data = catalog.as_json()
+        ```
+    
+    === "List"
+
+        ```python
+        from cfod import catalog
+        data = catalog.as_list()
+        ```
+    
+    === "Dataframe"
+
+        ```python
+        from cfod import catalog
+        data = catalog.as_dataframe()
+        ```
+
+    === "FITS"
+
+        ```python
+        from cfod import catalog
+        data = catalog.as_dataframe()
+        ```
+
+    

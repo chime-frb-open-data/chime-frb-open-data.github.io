@@ -1,5 +1,8 @@
-Localizations are key to understanding FRBs and this tutorial will show you how to plot localizations from Catalog 1. 
-You'll need the following Python packages to complete this tutorial: **h5py**, **numpy**, **healpy**, and **matplotlib**.
+*Author: Alex Josephy*
+
+Localizations are key to understanding FRBs and this tutorial will show you how to plot localizations from CHIME/FRB Catalog Data.
+
+Following Python packages are required complete this tutorial: *h5py*, *numpy*, *healpy*, and *matplotlib*.
 
 ## Loading in localization data
 The localization data are stored in an HDF5 format. We include various views of the underlying probability distribution, which should be useful for different situations (e.g. healpix maps, contours lists). 
@@ -48,7 +51,7 @@ The localization data are stored in an HDF5 format. We include various views of 
                 print('  ' + key + ':', value.shape, value.dtype)
         print()
     ```
-## ROOT
+## ROOT Attributes
 The attributes at the root level include some basic parameters: TNS name, the positional values reported in the Catalog table, coordinate system details, and galactic coordinates for convenience.
 
 ???+ Example "ROOT"
@@ -125,8 +128,7 @@ A sparse representation of a HEALPix map, where pixels with effectively zero pro
       CL: (174835,) float32
     ```
 
-### Sampling the Region
-
+### Sampling the Localization Region
 
 ???+ Example "Example usage of HEALPix"
     ```
@@ -173,7 +175,7 @@ A Gnomonic projection of the HEALPix map is included for convenient visualizatio
       data: (120, 600) float32
     ```
 
-### Making a plot¶
+### Making a Localization Plot
 
 ???+ Example
 
@@ -286,5 +288,3 @@ Your plot generated from the above script should look similar to this plot:
 
 Your plot generated from the above script should look similar to this plot:
 ![contour plot](static/localization/contours.png)
-
-Tutorial provided by Alex Josephy.

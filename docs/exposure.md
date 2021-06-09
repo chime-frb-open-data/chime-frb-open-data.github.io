@@ -1,5 +1,7 @@
-Below we provide a sample script for creating an exposure map of the Catalog 1 CHIME/FRB Data. This sample script uses the healpy package to project the exposure map onto the 2D plane. You'll need the following Python packages for this example: **numpy**, **matplotlib**, **healpy**, and **astropy**.
-The sample script will show you how to create both a high resolution and low resolution exposure map, top and bottom plots respectively.
+*Author: Dr. Pragya Chawla*
+
+
+Below we provide a sample script for creating an exposure map from CHIME/FRB Catalog 1 Data. This example uses the healpy package to project the exposure map onto the 2D plane and serves as an example tp create both a high and low resolution exposure maps.
 
 ![high res image](static/exposure/hires.png)
 
@@ -49,12 +51,19 @@ The sample script will show you how to create both a high resolution and low res
     hp.mollview(hpxmap_dg, coord=['C','G'], norm='log', unit="Hours")
     ```
 
-??? hint
-    where,
+???+ hint
 
     - `nside_out` Varying nside_out parameter below will change the resolution. The nside parameter for the current map is 4096. You can switch to a lower value. However, do not use an nside lower than 512 as you would not be nyquist sampling the CHIME/FRB beam pattern in that case.
     - `hpxmap` Your HEALpix map will live here.
     - `hpxmap_dg` Your downgraded HEALpix map will live here.
     - `hp.mollview` Plots a Mollweide projection of your HEALpix map.
 
-Tutorial provided by Dr. Pragya Chawla.
+This utility is also provided through the [CHIME/FRB Open Data](https://github.com/chime-frb-open-data/chime-frb-open-data) python project.
+
+???+ info ":fontawesome-brands-python: cfod"
+
+    ```python
+    from cfod.analysis import exposure
+    fname = "exposure_int_20180828_20191001_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz"
+    exposure.render(filepath=fname)
+    ```

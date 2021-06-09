@@ -3,6 +3,17 @@
 
 Below we provide a sample script for creating an exposure map from CHIME/FRB Catalog 1 Data. This example uses the healpy package to project the exposure map onto the 2D plane and serves as an example tp create both a high and low resolution exposure maps.
 
+This utility is also provided through the [CHIME/FRB Open Data](https://github.com/chime-frb-open-data/chime-frb-open-data) python project.
+
+???+ info ":fontawesome-brands-python: cfod"
+
+    ```python
+    from cfod.analysis import exposure
+    fname = "exposure_int_20180828_20191001_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz"
+    exposure.render(filepath=fname)
+    ```
+
+
 ![high res image](static/exposure/hires.png)
 
 ![low res image](static/exposure/lowerres.png)
@@ -57,13 +68,3 @@ Below we provide a sample script for creating an exposure map from CHIME/FRB Cat
     - `hpxmap` Your HEALpix map will live here.
     - `hpxmap_dg` Your downgraded HEALpix map will live here.
     - `hp.mollview` Plots a Mollweide projection of your HEALpix map.
-
-This utility is also provided through the [CHIME/FRB Open Data](https://github.com/chime-frb-open-data/chime-frb-open-data) python project.
-
-???+ info ":fontawesome-brands-python: cfod"
-
-    ```python
-    from cfod.analysis import exposure
-    fname = "exposure_int_20180828_20191001_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz"
-    exposure.render(filepath=fname)
-    ```

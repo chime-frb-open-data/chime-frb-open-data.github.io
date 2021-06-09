@@ -1,4 +1,4 @@
-*Author: Dr. Pragya Chawla*
+*Author: Pragya Chawla*
 
 
 Below we provide a sample script for creating an exposure map from CHIME/FRB Catalog 1 Data. This example uses the healpy package to project the exposure map onto the 2D plane and serves as an example tp create both a high and low resolution exposure maps.
@@ -27,9 +27,9 @@ This utility is also provided through the [CHIME/FRB Open Data](https://github.c
     from astropy.coordinates import SkyCoord
     import astropy.units as u
 
-    fname_u = "exposure_int_20180828_20191001_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz"
-    fname_l = "exposure_int_20180828_20191001_transit_L_beam_FWHM-600_res_4s_0.86_arcmin.npz"
-    
+    fname_u = "exposure_int_20180828_20190702_transit_L_beam_FWHM-600_res_4s_0.86_arcmin.npz" #Upper Transit
+    fname_l = "exposure_int_20180828_20190702_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz" #Lower Transit
+
     with np.load(fname_u) as data:
         exposure = data["exposure"]
     
@@ -49,7 +49,7 @@ This utility is also provided through the [CHIME/FRB Open Data](https://github.c
     
     # Plotting
     hp.mollview(hpxmap, coord=['C','G'], norm='log', unit="Hours")
-    # Check exposure time in hours for R1 repeater
+    # Check exposure time in hours for FRB 20121102A
     coord = SkyCoord("05:31:58.70", "+33:08:52.5", frame='icrs', unit = u.deg)
     print("Exposure (in hours): %.2f"%hpxmap[hp.ang2pix(nside, coord.ra.deg, coord.dec.deg,  lonlat=True)])
 

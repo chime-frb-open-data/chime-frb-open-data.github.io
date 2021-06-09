@@ -6,7 +6,7 @@ For reading `msgpack` data provided in this release, headover to the [CHIME/FRB 
     === "Single File"
 
         ```python
-        from cfod import chime_intensity as ci
+        from cfod.analysis.intensity import chime_intensity as ci
         fn = `astro_5941664_20180406203904337770_beam0147_00245439_02.msgpack`
         intensity, weights, fpga0, fpgaN, binning, frame0_nano, nrfifreq, rfi_mask = ci.unpack_data(fn)
         ```
@@ -14,7 +14,7 @@ For reading `msgpack` data provided in this release, headover to the [CHIME/FRB 
     === "Multiple files"
 
         ```python
-        from cfod import chime_intensity as ci
+        from cfod.analysis.intensity import chime_intensity as ci
         fns = ['file1', 'file2', 'file3']
         intensity, weights, fpga0s, fpgaNs, binning, rfi_mask, frame0_nanos = ci.unpack_datafiles(fns)
         ```
@@ -44,7 +44,8 @@ The waterfalls derived from complex voltage (baseband) data have file names `bur
 Note that the bursts are too dim too see in individual frequency channels at full resolution. In the paper, we have downsampled the data in frequency for visualization.
 
 Data can be accessed and displayed in Python as, e.g.:
-??? example
+???+ Example
+
     ```python
     import matplotlib.pyplot as plt
     import numpy as np
@@ -77,21 +78,22 @@ The data have a `1024` frequency channels over 400 MHz with time resolution of
 channels due to RFI are replaced by `np.nan`. Data can be accessed and 
 displayed in Python as using the following code,
 
-??? example
+??? Example
+
     ```python
-        import glob
-        import matplotlib.pyplot as plt
-        import numpy as np
-        fnames = glob.glob("chimefrb_SGR1935+2154_20200428_B????.npz")
-        for fname in fnames:
-            data = np.load(fname)
-            print(data.files)
-            intensity = data["intensity"]
-            times = data["times"]
-            frequencies = data["frequencies"]
-            plt.figure()
-            plt.imshow(intensity, aspect="auto", origin="lower", interpolation="nearest")
-            plt.show()
+    import glob
+    import matplotlib.pyplot as plt
+    import numpy as np
+    fnames = glob.glob("chimefrb_SGR1935+2154_20200428_B????.npz")
+    for fname in fnames:
+        data = np.load(fname)
+        print(data.files)
+        intensity = data["intensity"]
+        times = data["times"]
+        frequencies = data["frequencies"]
+        plt.figure()
+        plt.imshow(intensity, aspect="auto", origin="lower", interpolation="nearest")
+        plt.show()
     ```
 
 The NumPy arrays stored in the npz files are:
@@ -134,7 +136,8 @@ CHIME, `332.7206 pc cm-3`.
 Below is an example of reading in complex voltages, determining Stokes 
 parameters, and plotting the total intensity:
 
-??? example
+??? Example
+
     ```python
     import matplotlib.pyplot as plt
     import numpy as np

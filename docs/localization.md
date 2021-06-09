@@ -2,7 +2,18 @@
 
 Localizations are key to understanding FRBs and this tutorial will show you how to plot localizations from CHIME/FRB Catalog Data.
 
-Following Python packages are required complete this tutorial: *h5py*, *numpy*, *healpy*, and *matplotlib*.
+All of the code provided in this tutorial, is also availaible through the [CHIME/FRB Open Data](https://github.com/chime-frb-open-data/chime-frb-open-data) python package.
+
+???+ info ":fontawesome-brands-python: cfod"
+
+    ```python
+    from cfod.routines import localizer
+    localize = localizer.Localize(filename=`FRB20180725A_localization.h5`)
+    localize.plot()
+    localize.countours()
+    ```
+
+Following Python packages are required complete this tutorial: *h5py*, *numpy*, *healpy*, and *matplotlib*. 
 
 ## Loading in localization data
 The localization data are stored in an HDF5 format. We include various views of the underlying probability distribution, which should be useful for different situations (e.g. healpix maps, contours lists). 

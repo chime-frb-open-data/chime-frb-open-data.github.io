@@ -11,3 +11,6 @@ Filterbank data for the fast radio bursts presented in the data release were ana
 
 ## npz
 A dictionary-like object with lazy-loading of files in the zipped archive, for further reading see [official numpy documentation](https://numpy.org/doc/stable/reference/generated/numpy.load.html). See the [code snippets](code.md) section for more details on paper specific details.
+
+## h5
+The Hierarchical Data Format version 5 (`HDF5`), is an open source file format that supports large, complex, heterogeneous data. HDF5 uses a file directory like structure that allows you to organize data within the file in many different structured ways, as you might do with files on your computer

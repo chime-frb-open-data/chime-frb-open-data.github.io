@@ -74,7 +74,7 @@ nav:
   #   - Technical: technical.md
   - Tutorials :
     - Catalog 1:
-      - Read in Catalog: catalog.md
+      - Read the Catalog: catalog.md
       - Make an Exposure Map: exposure.md
       - Make a Localization Plot: localization.md
       - Make a Waterfall Plot: waterfall.md

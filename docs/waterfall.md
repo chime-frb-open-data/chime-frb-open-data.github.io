@@ -11,8 +11,8 @@ All of the code provided in this tutorial, is also availaible through the [CHIME
     ```python
     from cfod.routines import waterfaller
     wfall = Waterfaller(filename=`FRB20180725A_waterfall.h5`)
-    wfall.plot(save=False)
-    wfall.cal_plot(save=True)
+    wfall.plot()
+    wfall.cal_plot(savepath="/some/path")
     ```
 
 ## Read hdf5 files

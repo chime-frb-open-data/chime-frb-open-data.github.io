@@ -315,7 +315,7 @@
   
     <li class="md-nav__item">
       <a href="../catalog/" class="md-nav__link">
-        Read in Catalog
+        Read the Catalog
       </a>
     </li>
   
@@ -577,13 +577,13 @@
                 <h2 id="release-01-frbs-400mhz">Release 01 | <a href="https://arxiv.org/abs/1901.04524">FRBs @ 400MHz</a><a class="headerlink" href="#release-01-frbs-400mhz" title="Permanent link">&para;</a></h2>
 <p>For reading <code>msgpack</code> data provided in this release, headover to the <a href="https://github.com/chime-frb-open-data/chime-frb-open-data">CHIME/FRB Open Data</a> Python package. </p>
 <details class="example"><summary>Example</summary><div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Single File</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod</span> <span class="kn">import</span> <span class="n">chime_intensity</span> <span class="k">as</span> <span class="n">ci</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod.analysis.intensity</span> <span class="kn">import</span> <span class="n">chime_intensity</span> <span class="k">as</span> <span class="n">ci</span>
 <span class="n">fn</span> <span class="o">=</span> <span class="err">`</span><span class="n">astro_5941664_20180406203904337770_beam0147_00245439_02</span><span class="o">.</span><span class="n">msgpack</span><span class="err">`</span>
 <span class="n">intensity</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">fpga0</span><span class="p">,</span> <span class="n">fpgaN</span><span class="p">,</span> <span class="n">binning</span><span class="p">,</span> <span class="n">frame0_nano</span><span class="p">,</span> <span class="n">nrfifreq</span><span class="p">,</span> <span class="n">rfi_mask</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">unpack_data</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Multiple files</label><div class="tabbed-content">
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod</span> <span class="kn">import</span> <span class="n">chime_intensity</span> <span class="k">as</span> <span class="n">ci</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod.analysis.intensity</span> <span class="kn">import</span> <span class="n">chime_intensity</span> <span class="k">as</span> <span class="n">ci</span>
 <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;file1&#39;</span><span class="p">,</span> <span class="s1">&#39;file2&#39;</span><span class="p">,</span> <span class="s1">&#39;file3&#39;</span><span class="p">]</span>
 <span class="n">intensity</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">fpga0s</span><span class="p">,</span> <span class="n">fpgaNs</span><span class="p">,</span> <span class="n">binning</span><span class="p">,</span> <span class="n">rfi_mask</span><span class="p">,</span> <span class="n">frame0_nanos</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">unpack_datafiles</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span>
 </code></pre></div>
@@ -610,7 +610,7 @@
 <p>The waterfalls derived from complex voltage (baseband) data have file names <code>burst_*_bb_1k_wfall.npz</code> and are stored at a resolution of 1,024 frequency channels over 400 MHz with time resolution and dedispersed to the DM as in <code>Extended Data Figure 1</code> of the paper: {40.96, 40.96, 20.48, 81.92}us and {348.78, 348.82, 348.82, 348.86} pc cm-3. In all cases zapped channels due to RFI are replaced by <code>np.nan</code>.</p>
 <p>Note that the bursts are too dim too see in individual frequency channels at full resolution. In the paper, we have downsampled the data in frequency for visualization.</p>
 <p>Data can be accessed and displayed in Python as, e.g.:</p>
-<details class="example"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;burst_9_bb_1k_wfall.npz&quot;</span>
@@ -638,19 +638,19 @@ corresponds to the CHIME/FRB beam that recorded that data. The highest S/N detec
 <code>0.98304ms</code> and are dedispersed to <code>332.7206 pc cm-3</code>. In all cases zapped 
 channels due to RFI are replaced by <code>np.nan</code>. Data can be accessed and 
 displayed in Python as using the following code,</p>
-<details class="example"><summary>Example</summary><div class="highlight"><pre><span></span><code>    <span class="kn">import</span> <span class="nn">glob</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-    <span class="n">fnames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;chimefrb_SGR1935+2154_20200428_B????.npz&quot;</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
-        <span class="n">intensity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">]</span>
-        <span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span>
-        <span class="n">frequencies</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;frequencies&quot;</span><span class="p">]</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<details class="example"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">fnames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;chimefrb_SGR1935+2154_20200428_B????.npz&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">files</span><span class="p">)</span>
+    <span class="n">intensity</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;intensity&quot;</span><span class="p">]</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;times&quot;</span><span class="p">]</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;frequencies&quot;</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">intensity</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;nearest&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 </details>
 <p>The NumPy arrays stored in the npz files are:</p>

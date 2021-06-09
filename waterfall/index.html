@@ -1,0 +1,900 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open Data Releases for CHIME/FRB">
+      
+      
+      
+        <meta name="author" content="Shiny Brar">
+      
+      
+      <link rel="icon" href="../material/chess">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
+    
+    
+      
+        <title>Make a Waterfall Plot - CHIME/FRB Open Data</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.875de78c.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chimefrb-waterfall-data" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+      
+  <img src="../static/chime-frb-logo-small.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CHIME/FRB Open Data
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Make a Waterfall Plot
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chime-frb-open-data/chime-frb-open-data.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+      
+  <img src="../static/chime-frb-logo-small.png" alt="logo">
+
+    </a>
+    CHIME/FRB Open Data
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chime-frb-open-data/chime-frb-open-data.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Get Started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      <label class="md-nav__link" for="__nav_2">
+        Data
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-releases/" class="md-nav__link">
+        Releases
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-formats/" class="md-nav__link">
+        Formats
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Tutorials
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+      
+      <label class="md-nav__link" for="__nav_3_1">
+        Catalog 1
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Catalog 1" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Catalog 1
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog/" class="md-nav__link">
+        Read in Catalog
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exposure/" class="md-nav__link">
+        Make an Exposure Map
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../localization/" class="md-nav__link">
+        Make a Localization Plot
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Make a Waterfall Plot
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Make a Waterfall Plot
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-hdf5-files" class="md-nav__link">
+    Read hdf5 files
+  </a>
+  
+    <nav class="md-nav" aria-label="Read hdf5 files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-data-files" class="md-nav__link">
+    Explore the data files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-the-radio-frequency-interference" class="md-nav__link">
+    Removing the Radio Frequency Interference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determine-the-peaks-and-snr-of-the-pulse" class="md-nav__link">
+    Determine the Peaks and SNR of the Pulse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualize-the-dynamic-spectra" class="md-nav__link">
+    Visualize the Dynamic Spectra
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-calibrated-data" class="md-nav__link">
+    Plotting Calibrated Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/" class="md-nav__link">
+        Previous Releases
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#read-hdf5-files" class="md-nav__link">
+    Read hdf5 files
+  </a>
+  
+    <nav class="md-nav" aria-label="Read hdf5 files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#explore-the-data-files" class="md-nav__link">
+    Explore the data files
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#removing-the-radio-frequency-interference" class="md-nav__link">
+    Removing the Radio Frequency Interference
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determine-the-peaks-and-snr-of-the-pulse" class="md-nav__link">
+    Determine the Peaks and SNR of the Pulse
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visualize-the-dynamic-spectra" class="md-nav__link">
+    Visualize the Dynamic Spectra
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plotting-calibrated-data" class="md-nav__link">
+    Plotting Calibrated Data
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/edit/master/docs/waterfall.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="chimefrb-waterfall-data">CHIME/FRB Waterfall Data<a class="headerlink" href="#chimefrb-waterfall-data" title="Permanent link">&para;</a></h1>
+<p><em>Author: Pranav Sanghvi</em></p>
+<p>This tutorial will help you get aquainted with the CHIME/FRB Catalog waterfall data. In this tutorial, the data file <code>FRB20180725A_waterfall.h5</code> was used, which contains data for FRB 20180725A. This data can be downloaded from the <a href="https://www.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/files/vault/AstroDataCitationDOI/CISTI.CANFAR/21.0007/data/waterfalls/data/FRB20180725A_waterfall.h5">CHIME/FRB Open Data Release</a>. To download additional data, visit the <a href="https://www.canfar.net/storage/list/AstroDataCitationDOI/CISTI.CANFAR/21.0007/data">Canadian Astronomy Data Center</a>.</p>
+<p>All of the code provided in this tutorial, is also availaible through the <a href="https://github.com/chime-frb-open-data/chime-frb-open-data">CHIME/FRB Open Data</a> python package.</p>
+<details class="info" open="open"><summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></span> cfod</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod.routines</span> <span class="kn">import</span> <span class="n">waterfaller</span>
+<span class="n">wfall</span> <span class="o">=</span> <span class="n">Waterfaller</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="err">`</span><span class="n">FRB20180725A_waterfall</span><span class="o">.</span><span class="n">h5</span><span class="err">`</span><span class="p">)</span>
+<span class="n">wfall</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">wfall</span><span class="o">.</span><span class="n">cal_plot</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h2 id="read-hdf5-files">Read hdf5 files<a class="headerlink" href="#read-hdf5-files" title="Permanent link">&para;</a></h2>
+<p>The user can use the <code>file_name</code> variable to store the name of the file that contains the FRB data to be analyzed. Be sure to follow the instructions for downloading the <code>hdf5</code> file for each FRB as desrcibed above. The file should be placed in the same directory as this notebook, or the full path should be specified in <code>file_name</code>.</p>
+<details class="example" open="open"><summary>Example</summary><div class="highlight"><pre><span></span><code><span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;FRB20180725A_waterfall.h5&quot;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h3 id="explore-the-data-files">Explore the data files<a class="headerlink" href="#explore-the-data-files" title="Permanent link">&para;</a></h3>
+<details class="example" open="open"><summary>File Contents</summary><div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;frb&#39;</span><span class="p">]</span>
+</code></pre></div>
+</details>
+<details open="open"><summary>Metadata</summary><div class="highlight"><pre><span></span><code><span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;frb&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">[</span><span class="s1">&#39;calibrated_wfall&#39;</span><span class="p">,</span>
+<span class="s1">&#39;extent&#39;</span><span class="p">,</span>
+<span class="s1">&#39;model_spec&#39;</span><span class="p">,</span>
+<span class="s1">&#39;model_ts&#39;</span><span class="p">,</span>
+<span class="s1">&#39;model_wfall&#39;</span><span class="p">,</span>
+<span class="s1">&#39;plot_freq&#39;</span><span class="p">,</span>
+<span class="s1">&#39;plot_time&#39;</span><span class="p">,</span>
+<span class="s1">&#39;spec&#39;</span><span class="p">,</span>
+<span class="s1">&#39;ts&#39;</span><span class="p">,</span>
+<span class="s1">&#39;wfall&#39;</span><span class="p">]</span>
+</code></pre></div>
+</details>
+<details class="hint"><summary>Metadata Description</summary><ul>
+<li><code>extent</code>: the extent of the waterfall data </li>
+<li><code>plot_freq</code>: The values of the frequecy indices in <span class="arithmatex">\(\rm{MHz}\)</span></li>
+<li><code>plot_time</code>: The value of the time indices in <span class="arithmatex">\(\rm{\mu s}\)</span></li>
+<li><code>wfall</code>: waterfall data</li>
+<li><code>model_wfall</code>: waterfall from fitted data </li>
+<li><code>spec</code>: Dynamic Spectrum</li>
+<li><code>model_spec</code>: model-fitted dynamic spectrum  </li>
+<li><code>ts</code>: time series data</li>
+<li><code>model_ts</code>: model-fitted time series </li>
+<li><code>caliberated_wfall</code>: The waterfall data with calibration applied</li>
+</ul>
+</details>
+<details class="example" open="open"><summary>Unpack the Data</summary><div class="highlight"><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;frb&quot;</span><span class="p">]</span>
+<span class="n">eventname</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;tns_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">wfall</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;wfall&quot;</span><span class="p">][:]</span>
+<span class="n">model_wfall</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model_wfall&quot;</span><span class="p">][:]</span>
+<span class="n">plot_time</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;plot_time&quot;</span><span class="p">][:]</span>
+<span class="n">plot_freq</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;plot_freq&quot;</span><span class="p">][:]</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ts&quot;</span><span class="p">][:]</span>
+<span class="n">model_ts</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model_ts&quot;</span><span class="p">][:]</span>
+<span class="n">spec</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;spec&quot;</span><span class="p">][:]</span>
+<span class="n">model_spec</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;model_spec&quot;</span><span class="p">][:]</span>
+<span class="n">extent</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;extent&quot;</span><span class="p">][:]</span>
+<span class="n">dm</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;dm&quot;</span><span class="p">][()]</span>
+<span class="n">scatterfit</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;scatterfit&quot;</span><span class="p">][()]</span>
+<span class="n">cal_obs_date</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;calibration_observation_date&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">cal_source_name</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;calibration_source_name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+<span class="n">cal_wfall</span> <span class="o">=</span>  <span class="n">data</span><span class="p">[</span><span class="s2">&quot;calibrated_wfall&quot;</span><span class="p">][:]</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">plot_time</span><span class="p">))</span> <span class="c1"># the delta (time) between time bins </span>
+<span class="c1"># this value is the same for both caliberated and uncalibrated data</span>
+</code></pre></div>
+</details>
+<h2 id="removing-the-radio-frequency-interference">Removing the Radio Frequency Interference<a class="headerlink" href="#removing-the-radio-frequency-interference" title="Permanent link">&para;</a></h2>
+<p>This process sets any frequency channel that has a higher variance than the mean variance (averaged across all frequency channels) to a <code>NaN</code> value using <code>np.nan</code>. </p>
+<details class="example" open="open"><summary>RFI Removal</summary><div class="highlight"><pre><span></span><code><span class="n">q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanquantile</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+
+<span class="c1"># additional masking of channels with RFI</span>
+<span class="n">rfi_masking_var_factor</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">channel_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanvar</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mean_channel_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">channel_variance</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">np</span><span class="o">.</span><span class="n">errstate</span><span class="p">(</span><span class="n">invalid</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">):</span>
+    <span class="n">rfi_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">channel_variance</span> <span class="o">&gt;</span> \
+                <span class="n">rfi_masking_var_factor</span> <span class="o">*</span> <span class="n">mean_channel_variance</span><span class="p">)</span> \
+                <span class="o">|</span> <span class="p">(</span><span class="n">spec</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">spec</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
+<span class="n">wfall</span><span class="p">[</span><span class="n">rfi_mask</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">model_wfall</span><span class="p">[</span><span class="n">rfi_mask</span><span class="p">,</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">spec</span><span class="p">[</span><span class="n">rfi_mask</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># remake time-series after RFI masking</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">model_wfall</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<h2 id="determine-the-peaks-and-snr-of-the-pulse">Determine the Peaks and SNR of the Pulse<a class="headerlink" href="#determine-the-peaks-and-snr-of-the-pulse" title="Permanent link">&para;</a></h2>
+<p>Peaks are identified after boxcar convolution.</p>
+<details class="example" open="open"><summary>Pulse Properties</summary><p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">boxcar_kernel</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">width</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">find_burst</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">min_width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_width</span><span class="o">=</span><span class="mi">128</span><span class="p">):</span>
+    <span class="n">min_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_width</span><span class="p">)</span>
+    <span class="n">max_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_width</span><span class="p">)</span>
+    <span class="c1"># do not search widths bigger than timeseries</span>
+    <span class="n">widths</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">min_width</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">max_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="c1"># envelope finding</span>
+    <span class="n">snrs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">widths</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">widths</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">widths</span><span class="p">)):</span>
+        <span class="n">convolved</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">boxcar_kernel</span><span class="p">(</span><span class="n">widths</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;same&quot;</span><span class="p">)</span>
+        <span class="n">peaks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">convolved</span><span class="p">)</span>
+        <span class="n">snrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">convolved</span><span class="p">[</span><span class="n">peaks</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">best_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanargmax</span><span class="p">(</span><span class="n">snrs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span><span class="p">[</span><span class="n">best_idx</span><span class="p">],</span> <span class="n">widths</span><span class="p">[</span><span class="n">best_idx</span><span class="p">],</span> <span class="n">snrs</span><span class="p">[</span><span class="n">best_idx</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>peak, width, snr = find_burst(ts)
+print(f&quot;Peak: {peak} at time sample, Width = {width*dt} ms, SNR = {snr}&quot;)
+</code></pre></div></p>
+</details>
+<h2 id="visualize-the-dynamic-spectra">Visualize the Dynamic Spectra<a class="headerlink" href="#visualize-the-dynamic-spectra" title="Permanent link">&para;</a></h2>
+<p>First and foremost, we need to bin the frequency data before we visualize it.</p>
+<details class="example" open="open"><summary>Bin Frequency Data</summary><p><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">bin_freq_channels</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fbin_factor</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">num_chan</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">num_chan</span> <span class="o">%</span> <span class="n">fbin_factor</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;frequency binning factor `fbin_factor` should be even&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">num_chan</span> <span class="o">//</span> <span class="n">fbin_factor</span><span class="p">,</span> <span class="n">fbin_factor</span><span class="p">)</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># bin frequency channels such that we have 16,384/16 = 1024 frequency channels </span>
+<span class="n">wfall</span> <span class="o">=</span> <span class="n">bin_freq_channels</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<details class="example" open="open"><summary>Plot the Dynamic Spectrum</summary><div class="highlight"><pre><span></span><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="c1">## Set up the image grid</span>
+<span class="n">gs</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                        <span class="n">height_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">data_im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">data_ts</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sharex</span><span class="o">=</span><span class="n">data_im</span><span class="p">)</span>
+<span class="n">data_spec</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">sharey</span><span class="o">=</span><span class="n">data_im</span><span class="p">)</span>
+
+
+<span class="c1">### time stamps relative to the peak</span>
+<span class="n">peak_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+<span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">plot_time</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span>
+<span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">plot_time</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span>
+<span class="n">plot_time</span> <span class="o">-=</span> <span class="n">plot_time</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span>
+
+<span class="c1"># prepare time-series for histogramming</span>
+<span class="n">plot_time</span> <span class="o">-=</span> <span class="n">dt</span> <span class="o">/</span> <span class="mf">2.</span>
+<span class="n">plot_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plot_time</span><span class="p">,</span> <span class="n">plot_time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span>
+
+<span class="c1">### plot dynamic spectrum</span>
+<span class="n">wfall</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">wfall</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">wfall</span><span class="p">)</span>   <span class="c1"># replace nans in the data with the data median</span>
+<span class="c1"># use standard deviation of residuals to set color scale</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="n">data_im</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wfall</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span>
+                <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="c1">### plot time-series</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_time</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:gray&quot;</span><span class="p">,</span>
+                <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+
+<span class="c1">### plot spectrum</span>
+<span class="n">data_spec</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">plot_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tab:gray&quot;</span><span class="p">)</span>
+
+<span class="c1">### plot model time-series and spectrum</span>
+<span class="k">if</span> <span class="n">scatterfit</span><span class="p">:</span>
+    <span class="n">data_spec</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model_spec</span><span class="p">,</span> <span class="n">plot_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+    <span class="n">data_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_time</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_ts</span><span class="p">,</span> <span class="n">model_ts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.25</span><span class="p">),</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">data_spec</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model_spec</span><span class="p">,</span> <span class="n">plot_freq</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">data_ts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">plot_time</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model_ts</span><span class="p">,</span> <span class="n">model_ts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span>
+                    <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">## BEautify plot</span>
+<span class="c1"># remove some labels and ticks for neatness</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">data_ts</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([],</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">data_spec</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">data_spec</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([],</span> <span class="n">visible</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_spec</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="n">data_spec</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">extent</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">extent</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">data_im</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">data_im</span><span class="o">.</span><span class="n">get_yticklabels</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+
+<span class="c1">#### highlighting the width of the pulse</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">plot_time</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
+                        <span class="n">plot_time</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> \
+                        <span class="o">-</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">),</span>
+                    <span class="nb">min</span><span class="p">(</span><span class="n">plot_time</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+                        <span class="n">plot_time</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">dt</span> \
+                        <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span><span class="p">),</span>
+                    <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;tab:blue&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+
+<span class="c1">##### add event ID and DM labels</span>
+<span class="n">xlim</span> <span class="o">=</span> <span class="n">data_ts</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="n">data_ts</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+
+<span class="c1"># add 20% extra white space at the top</span>
+<span class="n">span</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">span</span><span class="p">)</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="n">data_ts</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+
+<span class="n">ypos</span> <span class="o">=</span> <span class="p">(</span><span class="n">ylim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.9</span> <span class="o">+</span> <span class="n">ylim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">xpos</span> <span class="o">=</span> <span class="p">(</span><span class="n">xlim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">xlim</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.98</span> <span class="o">+</span> <span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data_ts</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xpos</span><span class="p">,</span> <span class="n">ypos</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="se">\n</span><span class="s2">DM: </span><span class="si">{:.1f}</span><span class="s2"> pc/cc</span><span class="se">\n</span><span class="s2">SNR: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eventname</span><span class="p">,</span> <span class="n">dm</span><span class="p">,</span><span class="n">snr</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span>
+                <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+
+<span class="n">data_im</span><span class="o">.</span><span class="n">locator_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="n">min_n_ticks</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">data_im</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
+<span class="n">data_im</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency [MHz]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">data_im</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time [ms]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">#savefigure</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_wfall.png&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eventname</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>      <span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="Waterfall" src="../static/wfall.png" /></p>
+</details>
+<h2 id="plotting-calibrated-data">Plotting Calibrated Data<a class="headerlink" href="#plotting-calibrated-data" title="Permanent link">&para;</a></h2>
+<p>Within the <code>hdf5</code> file is the calibrated waterfall data, allowing one to plot the data as measured in Janskys.</p>
+<details class="example" open="open"><summary> Extract the Waterfall and Construct the Time Series</summary><div class="highlight"><pre><span></span><code><span class="n">cal_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">cal_wfall</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmedian</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">)</span>   <span class="c1"># replace nans in the data with the data median</span>
+<span class="c1">#bin frequency channels such that we have 16,384/16 = 1024 frequency channels </span>
+<span class="n">cal_wfall</span> <span class="o">=</span> <span class="n">bin_freq_channels</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> 
+<span class="n">vmin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vmax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanpercentile</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">,</span> <span class="mi">99</span><span class="p">)</span>
+
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cal_ts</span><span class="p">))</span><span class="o">*</span><span class="n">dt</span>
+<span class="n">peak_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">cal_ts</span><span class="p">)</span>
+<span class="n">times</span> <span class="o">-=</span> <span class="n">times</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span>
+<span class="n">times</span> <span class="o">-=</span> <span class="n">dt</span> <span class="o">/</span> <span class="mf">2.</span>
+
+<span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">extent</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">A</span>
+<span class="s2">C</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">ax_dict</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">subplot_mosaic</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cal_wfall</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">extent</span> <span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Waterfall of </span><span class="si">{</span><span class="n">eventname</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> Calibrated to </span><span class="si">{</span><span class="n">cal_source_name</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">cal_obs_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="mi">400</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">700</span><span class="p">,</span> <span class="mi">800</span><span class="p">])</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span><span class="n">cal_ts</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time [ms]&quot;</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Series of </span><span class="si">{</span><span class="n">eventname</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">Calibrated to </span><span class="si">{</span><span class="n">cal_source_name</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">cal_obs_date</span><span class="si">}</span><span class="s2"> </span><span class="se">\</span>
+<span class="s2">        </span><span class="se">\n</span><span class="s2"> Peak flux = </span><span class="si">{</span><span class="n">cal_ts</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Jy&quot;</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency [MHz]&quot;</span><span class="p">)</span>
+<span class="n">ax_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Flux [Jy]&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="CalWaterfall" src="../static/cal_wfall.png" /></p>
+</details>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../localization/" class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Make a Localization Plot
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../code/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Previous Releases
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2020 CHIME/FRB Collaboration
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.34eae1b6.min.js"></script>
+      
+    
+  </body>
+</html>

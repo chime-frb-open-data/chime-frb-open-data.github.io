@@ -13,8 +13,8 @@
         <meta name="author" content="Shiny Brar">
       
       
-      <link rel="icon" href="material/chess">
-      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
+      <link rel="icon" href="../material/chess">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.6">
     
     
       
@@ -22,10 +22,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.875de78c.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
         
           
           
@@ -59,7 +59,7 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
   
     
-    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -73,9 +73,9 @@
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="index.html" title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+    <a href=".." title="CHIME/FRB Open Data" class="md-header__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
       
-  <img src="static/chime-frb-logo-small.png" alt="logo">
+  <img src="../static/chime-frb-logo-small.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -165,9 +165,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="index.html" title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
+    <a href=".." title="CHIME/FRB Open Data" class="md-nav__button md-logo" aria-label="CHIME/FRB Open Data" data-md-component="logo">
       
-  <img src="static/chime-frb-logo-small.png" alt="logo">
+  <img src="../static/chime-frb-logo-small.png" alt="logo">
 
     </a>
     CHIME/FRB Open Data
@@ -196,7 +196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="index.html" class="md-nav__link">
+      <a href=".." class="md-nav__link">
         Get Started
       </a>
     </li>
@@ -232,7 +232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-releases.html" class="md-nav__link">
+      <a href="../data-releases/" class="md-nav__link">
         Releases
       </a>
     </li>
@@ -244,7 +244,7 @@
   
   
     <li class="md-nav__item">
-      <a href="data-formats.html" class="md-nav__link">
+      <a href="../data-formats/" class="md-nav__link">
         Formats
       </a>
     </li>
@@ -311,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="catalog.html" class="md-nav__link">
+      <a href="../catalog/" class="md-nav__link">
         Read in Catalog
       </a>
     </li>
@@ -330,7 +330,7 @@
       
       
       
-      <a href="exposure.html" class="md-nav__link md-nav__link--active">
+      <a href="./" class="md-nav__link md-nav__link--active">
         Make an Exposure Map
       </a>
       
@@ -343,7 +343,7 @@
   
   
     <li class="md-nav__item">
-      <a href="localization.html" class="md-nav__link">
+      <a href="../localization/" class="md-nav__link">
         Make a Localization Plot
       </a>
     </li>
@@ -355,19 +355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="bandpass.html" class="md-nav__link">
-        Applying Bandpass Correction
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="waterfall.html" class="md-nav__link">
+      <a href="../waterfall/" class="md-nav__link">
         Make a Waterfall Plot
       </a>
     </li>
@@ -385,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="code.html" class="md-nav__link">
+      <a href="../code/" class="md-nav__link">
         Previous Releases
       </a>
     </li>
@@ -417,10 +405,10 @@
                 
                   <h1>Make an Exposure Map</h1>
                 
-                <p>Below we provide a sample script for creating an exposure map of the Catalog 1 CHIME/FRB Data. This sample script uses the healpy package to project the exposure map onto the 2D plane. You'll need the following Python packages for this example: <strong>numpy</strong>, <strong>matplotlib</strong>, <strong>healpy</strong>, and <strong>astropy</strong>.
-The sample script will show you how to create both a high resolution and low resolution exposure map, top and bottom plots respectively.</p>
-<p><img alt="high res image" src="static/exposure/hires.png" /></p>
-<p><img alt="low res image" src="static/exposure/lowerres.png" /></p>
+                <p><em>Author: Dr. Pragya Chawla</em></p>
+<p>Below we provide a sample script for creating an exposure map from CHIME/FRB Catalog 1 Data. This example uses the healpy package to project the exposure map onto the 2D plane and serves as an example tp create both a high and low resolution exposure maps.</p>
+<p><img alt="high res image" src="../static/exposure/hires.png" /></p>
+<p><img alt="low res image" src="../static/exposure/lowerres.png" /></p>
 <details class="example" open="open"><summary>Creating an exposure map for both upper and lower transits</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">healpy</span> <span class="k">as</span> <span class="nn">hp</span>
@@ -462,15 +450,19 @@ The sample script will show you how to create both a high resolution and low res
 <span class="n">hp</span><span class="o">.</span><span class="n">mollview</span><span class="p">(</span><span class="n">hpxmap_dg</span><span class="p">,</span> <span class="n">coord</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="s1">&#39;G&#39;</span><span class="p">],</span> <span class="n">norm</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;Hours&quot;</span><span class="p">)</span>
 </code></pre></div>
 </details>
-<details class="hint"><summary>Hint</summary><p>where,</p>
-<ul>
+<details class="hint" open="open"><summary>Hint</summary><ul>
 <li><code>nside_out</code> Varying nside_out parameter below will change the resolution. The nside parameter for the current map is 4096. You can switch to a lower value. However, do not use an nside lower than 512 as you would not be nyquist sampling the CHIME/FRB beam pattern in that case.</li>
 <li><code>hpxmap</code> Your HEALpix map will live here.</li>
 <li><code>hpxmap_dg</code> Your downgraded HEALpix map will live here.</li>
 <li><code>hp.mollview</code> Plots a Mollweide projection of your HEALpix map.</li>
 </ul>
 </details>
-<p>Tutorial provided by Dr. Pragya Chawla.</p>
+<p>This utility is also provided through the <a href="https://github.com/chime-frb-open-data/chime-frb-open-data">CHIME/FRB Open Data</a> python project.</p>
+<details class="info" open="open"><summary><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6zM286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3zM167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4zm-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3z"/></svg></span> cfod</summary><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">cfod.analysis</span> <span class="kn">import</span> <span class="n">exposure</span>
+<span class="n">fname</span> <span class="o">=</span> <span class="s2">&quot;exposure_int_20180828_20191001_transit_U_beam_FWHM-600_res_4s_0.86_arcmin.npz&quot;</span>
+<span class="n">exposure</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">fname</span><span class="p">)</span>
+</code></pre></div>
+</details>
                 
               
               
@@ -489,8 +481,7 @@ The sample script will show you how to create both a high resolution and low res
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        
-        <a href="catalog.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Read in Catalog" rel="prev">
+        <a href="../catalog/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -505,8 +496,7 @@ The sample script will show you how to create both a high resolution and low res
         </a>
       
       
-        
-        <a href="localization.html" class="md-footer__link md-footer__link--next" aria-label="Next: Make a Localization Plot" rel="next">
+        <a href="../localization/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
@@ -545,10 +535,10 @@ The sample script will show you how to create both a high resolution and low res
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["tabs", "instant"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../assets/javascripts/bundle.34eae1b6.min.js"></script>
       
     
   </body>

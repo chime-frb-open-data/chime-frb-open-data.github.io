@@ -9,6 +9,7 @@ license = "MIT"
 python = "^3.9"
 mkdocs-material = "^7.3.3"
 mkdocs-jupyter = "^0.18.0"
+voevent-parse = "^1.0.3"
 
 [tool.poetry.dev-dependencies]
 

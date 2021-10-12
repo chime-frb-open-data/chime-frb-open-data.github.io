@@ -73,9 +73,9 @@ nav:
   # - Papers:
   #   - Scientific: scientific.md
   #   - Technical: technical.md
-  - VO Events: voevents.md
-    # - Slide Deck: CHIMEFRB_VOEvent_Service_for_External_Subscribers.pdf
-    # - Example: chimefrb_voevent_tutorial.ipynb
+  - VOEvents: voevents.md
+    - Slide Deck: static/CHIMEFRB_VOEvent_Service_for_External_Subscribers.pdf
+    - Tutorial: notebooks/chimefrb_voevent_tutorial.ipynb
   - Tutorials :
     - Catalog 1:
       - Read the Catalog: catalog.md

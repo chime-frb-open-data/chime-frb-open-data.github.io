@@ -8,8 +8,9 @@ The purpose of this website is to be the central resource for providing access t
 <br>
 <br>
 <center>
-[:material-download: Data Releases](data-releases.md){: .md-button .md-button--primary } 
-[:material-code-braces: Tutorials](catalog.md){: .md-button .md-button--primary } 
+[:material-download: Releases](data-releases.md){: .md-button .md-button--primary } 
+[:material-code-braces: Tutorials](catalog.md){: .md-button .md-button--primary }
+[:octicons-repo-push-16: VO Events](voevents.md){: .md-button .md-button--primary }
 [:fontawesome-brands-python: Package](https://github.com/chime-frb-open-data/chime-frb-open-data){: .md-button .md-button--primary }
 [:material-account-supervisor: Support](https://github.com/chime-frb-open-data/community){: .md-button .md-button--primary }
 

@@ -1,0 +1,54 @@
+<VOEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ivoa.net/xml/VOEvent/v2.0 http://www.ivoa.net/xml/VOEvent/VOEvent-v2.0.xsd" version="2.0" role="utility" ivorn="ivo://ca.chimenet.frb/OBS-RETRACTION-#1995-01-01-00:00:00.000000UTC+0000_65550c2c8d65">
+  <Who>
+    <Description>CHIME/FRB VOEvent Service</Description>
+    <AuthorIVORN>ivo://ca.chimenet.frb/contact</AuthorIVORN>
+    <Date>1995-01-01T00:00:00+00:00</Date>
+    <Author>
+      <contactEmail>andrew.zwaniga@mail.mcgill.ca</contactEmail>
+      <contactName>Andrew Zwaniga</contactName>
+      <shortName>CHIME/FRB VOEvent Service</shortName>
+    </Author>
+  </Who>
+  <What/>
+  <WhereWhen>
+    <ObsDataLocation>
+      <ObservatoryLocation id="CHIME lives at Dominion Radio Astrophysical Observatory (DRAO)"/>
+      <ObservationLocation>
+        <AstroCoordSystem id="UTC-FK5-TOPO"/>
+        <AstroCoords coord_system_id="UTC-FK5-TOPO">
+          <Time unit="s">
+            <TimeInstant>
+              <ISOTime>1995-01-01T00:00:00.000000</ISOTime>
+            </TimeInstant>
+          </Time>
+          <Position2D unit="deg">
+            <Name1>RA</Name1>
+            <Name2>Dec</Name2>
+            <Value2>
+              <C1>0</C1>
+              <C2>0</C2>
+            </Value2>
+            <Error2Radius>0</Error2Radius>
+          </Position2D>
+        </AstroCoords>
+      </ObservationLocation>
+    </ObsDataLocation>
+  </WhereWhen>
+  <How>
+    <Description>Human-issued retraction</Description>
+    <Reference uri="https://www.chime-frb.ca"/>
+  </How>
+  <Why importance="1">
+    <Inference probability="0" relation="">
+      <Name/>
+      <Concept>No probabilistic measurement is reported</Concept>
+    </Inference>
+    <Description>CHIME/FRB VOEvent Service retraction-type alert from human agent</Description>
+    <Name/>
+    <Concept>Importance is fixed at 1 for the retraction-type; Probability is not reported for retraction-type</Concept>
+  </Why>
+  <Citations>
+    <EventIVORN cite="retraction">ivo://ca.chimenet.frb/FRB-DETECTION-#1995-01-01-00:00:00.000000UTC+0000_daa68ff4aeaf</EventIVORN>
+  </Citations>
+  <original_prefix>voe</original_prefix>
+</VOEvent>

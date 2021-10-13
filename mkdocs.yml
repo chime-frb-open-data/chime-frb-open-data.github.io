@@ -24,7 +24,6 @@ theme:
 
 plugins:
   - search
-  - mkdocs-jupyter
 
 # Extensions
 markdown_extensions:
@@ -73,10 +72,11 @@ nav:
   # - Papers:
   #   - Scientific: scientific.md
   #   - Technical: technical.md
-  - VOEvents:
-    - FAQ: voevents.md
-    - Slide Deck: static/CHIMEFRB_VOEvent_Service_for_External_Subscribers.pdf
-    - Tutorial: notebooks/chimefrb_voevent_tutorial.ipynb
+  - VOEvents: 
+    - Welcome: voevents.md
+    - FAQs: voevents-faq.md
+    - Presentation Slides: static/CHIMEFRB_VOEvent_Service_for_External_Subscribers.pdf
+    - Notebook Tutorial: https://github.com/chime-frb-open-data/chime-frb-open-data.github.io/blob/929acb72c0f0ce370ff414ba22f303c367fca81d/docs/notebooks/chimefrb_voevent_tutorial.ipynb
   - Tutorials :
     - Catalog 1:
       - Read the Catalog: catalog.md

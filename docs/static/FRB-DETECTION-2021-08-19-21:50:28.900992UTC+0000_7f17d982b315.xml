@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<voe:VOEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:voe="http://www.ivoa.net/xml/VOEvent/v2.0" xsi:schemaLocation="http://www.ivoa.net/xml/VOEvent/v2.0 http://www.ivoa.net/xml/VOEvent/VOEvent-v2.0.xsd" version="2.0" role="observation" ivorn="ivo://ca.chimenet.frb/FRB-DETECTION-#1995-01-01-00:00:00.0000002UTC+0000_7f17d982b315">
+  <Who>
+    <Description>CHIME/FRB VOEvent Service</Description>
+    <AuthorIVORN>ivo://ca.chimenet.frb/contact</AuthorIVORN>
+    <Date>1995-01-01T00:00:00+00:00</Date>
+    <Author>
+      <contactEmail>andrew.zwaniga@mail.mcgill.ca</contactEmail>
+      <contactName>Andrew Zwaniga</contactName>
+      <shortName>CHIME/FRB VOEvent Service</shortName>
+    </Author>
+  </Who>
+  <What>
+    <Group name="observatory parameters">
+      <Param ucd="time.resolution" unit="ms" value="0.983" name="sampling_time">
+        <Description>FRB search time resolution</Description>
+      </Param>
+      <Param ucd="instr.bandwidth" unit="MHz" value="400" name="bandwidth">
+        <Description>CHIME telescope bandwidth</Description>
+      </Param>
+      <Param ucd="em.freq;instr" unit="MHz" value="600" name="centre_frequency">
+        <Description>CHIME telescope central frequency</Description>
+      </Param>
+      <Param ucd="" unit="" value="2" name="npol">
+        <Description>The CHIME telescope has dual-polarization feeds</Description>
+      </Param>
+      <Param ucd="" unit="" value="8" name="bits_per_sample">
+        <Description>CHIME/FRB samples 16384 frequency channels at 0.983 ms cadence as 8-bit integers</Description>
+      </Param>
+      <Param ucd="phot.antennaTemp" unit="K" value="50" name="tsys">
+        <Description>CHIME receiver noise temperature</Description>
+      </Param>
+      <Param ucd="" unit="" value="" name="backend">
+        <Description>CHIME/FRB backend</Description>
+      </Param>
+    </Group>
+    <Group name="event parameters">
+      <Param ucd="" unit="" value="181344768" name="event_no">
+        <Description>CHIME/FRB event number assigned by real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="" value="" name="known_source_name">
+        <Description>CHIME/FRB internal known source name</Description>
+      </Param>
+      <Param ucd="" unit="" value="EXTRAGALACTIC" name="event_type">
+        <Description>Unknown event type assigned from real-time pipeline e.g. EXTRAGALACTIC, AMBIGUOUS, GALACTIC</Description>
+      </Param>
+      <Param ucd="" unit="" value="real-time" name="pipeline_name">
+        <Description>The name of the pipeline that produced this data</Description>
+      </Param>
+      <Param ucd="phys.dispMeasure" unit="pc/cm^3" value="1" name="dm">
+        <Description>Dispersion measure from real-time pipeline</Description>
+      </Param>
+      <Param ucd="stat.error;phys.dispMeasure" unit="pc/cm^3" value="0.40439999103546104" name="dm_error">
+        <Description>Error in dispersion measure from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="" value="1995-01-01 00:00:00.000000+00:00" name="timestamp_utc">
+        <Description>Topocentric arrival time at 400 MHz</Description>
+      </Param>
+      <Param ucd="" unit="" value="0.007864319719374001" name="timestamp_utc_error">
+        <Description>Error in topocentric arrival time at 400 MHz in seconds from real-time pipeline</Description>
+      </Param>
+      <Param ucd="stat.snr" unit="" value="124.84750366210938" name="snr">
+        <Description>Signal-to-noise ratio from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="degrees" value="0.0721" name="pos_error_semiminor_deg_95">
+        <Description>Localization error ellipse semi-minor axis to 95 percent C.L. in right ascension (J2000) in degrees from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="degrees" value="0.11850000000000001" name="pos_error_semimajor_deg_95">
+        <Description>Localization error ellipse semi-major axis to 95 percent C.L. in declination (J2000) in degrees from real-time pipeline</Description>
+      </Param>
+    </Group>
+    <Group name="advanced parameters">
+      <Param ucd="" unit="pc/cm^3" value="20.1343" name="dm_gal_ne_2001_max">
+        <Description>Max Milky Way DM contribution (NE 2001 model) from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="pc/cm^3" value="16.1522" name="dm_gal_ymw_2016_max">
+        <Description>Max Milky Way DM contribution (YMW 2016 model) from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="" value="2021-08-19 21:50:19.515229+00:00" name="timestamp_utc_inf_freq">
+        <Description>Topocentric arrival time at infinite frequency</Description>
+      </Param>
+      <Param ucd="" unit="" value="0.013108633183509667" name="timestamp_utc_inf_freq_error">
+        <Description>Error in topocentric arrival time at infinite frequency from real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="" value="0.0" name="spectral_index">
+        <Description>Spectral index as measured by real-time pipeline</Description>
+      </Param>
+      <Param ucd="" unit="" value="4.0" name="spectral_index_error">
+        <Description>Error in spectral index as measured by real-time pipeline</Description>
+      </Param>
+    </Group>
+  </What>
+  <WhereWhen>
+    <ObsDataLocation>
+      <ObservatoryLocation id="CHIME lives at Dominion Radio Astrophysical Observatory (DRAO)"/>
+      <ObservationLocation>
+        <AstroCoordSystem id="UTC-FK5-TOPO"/>
+        <AstroCoords coord_system_id="UTC-FK5-TOPO">
+          <Time unit="s">
+            <TimeInstant>
+              <ISOTime>1995-01-01T00:00:00.000000</ISOTime>
+            </TimeInstant>
+          </Time>
+          <Position2D unit="deg">
+            <Name1>RA</Name1>
+            <Name2>Dec</Name2>
+            <Value2>
+              <C1>0</C1>
+              <C2>0</C2>
+            </Value2>
+            <Error2Radius>0.11850000000000001</Error2Radius>
+          </Position2D>
+        </AstroCoords>
+      </ObservationLocation>
+    </ObsDataLocation>
+  </WhereWhen>
+  <How>
+    <Description>Real-time pipeline topocentric time-of-arrival is corrected for dispersion to bottom of CHIME band (400 MHz)</Description>
+    <Reference uri="https://www.chime-frb.ca"/>
+  </How>
+  <Why importance="1.0">
+    <Inference probability="0" relation="">
+      <Name/>
+      <Concept>No probabilistic measurement is reported</Concept>
+    </Inference>
+    <Description>CHIME/FRB VOEvent Service detection-type alert from real-time pipeline</Description>
+    <Name/>
+    <Concept>Importance is a machine learning score from 0-1 separating RFI (0) from an astrophysical signal (1); Probability is not reported for the detection-type VOEvent</Concept>
+  </Why>
+</voe:VOEvent>

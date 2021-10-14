@@ -5,7 +5,7 @@
     The service requires a (free) subscription that can be requested [here](https://chime-frb.ca/voevents). 
 
 ??? help "We just received a VOEvent, is it a FRB?"
-    Not every alert will represent a true FRB since alerts are published in real-time, they are only verified by a human afterwards. To check the status of a particular alert, it is best to reach out to CHIME/FRB by opening a GitHub issue [here](https://github.com/chime-frb-open-data/community/issues).
+    Not every alert will represent a true FRB! Because alerts are published in real-time they are only verified by a human after you reveive the VOEvent. To check the status of a particular alert, join or start a discussion [here](https://github.com/chime-frb-open-data/community/discussions).
 
 ??? help "We used the service for follow-up observations, what should we do next?"
     We ask that you cite any CHIME/FRB VOEvents that were used to trigger your follow-up observations by their VOEvent IVORN and in addition cite the usage of the Service with the following statement: 
@@ -13,10 +13,10 @@
     **This research has made use of the CHIME/FRB VOEvent Service.**
 
 ??? help "How do we get help regarding issues about the service"
-    Please consult our community issue page [here](https://github.com/chime-frb-open-data/community/issues). You can search existing issues first to see if your problem, or similar, has already been solved or is being actively investigated; otherwise, please open a new issue there. 
+    Please consult our GitHub community discussion page [here](https://github.com/chime-frb-open-data/community/discussions). You can search for existing issues first to see if your problem, or similar, has already been solved or is being actively investigated; otherwise, consider starting a discussion there.
 
 ??? help "How can I contact the CHIME/FRB team for quick questions?"
-    Please go [here](https://github.com/chime-frb-open-data/community/issues) first to see if your question has already been answered among previously submitted issues. If not, please add a new one. We are committed to addressing issues in a timely manner. 
+    Please check to see if your question is answered [here](https://github.com/chime-frb-open-data/community/discussions). If not, consider starting a new discussion, and a CHIME/FRB team member will help out in the forum in a timely manner.
 
 
 ## VOEvent Service Questions
@@ -51,7 +51,7 @@
     
     **This research has made use of the CHIME/FRB VOEvent Service.**
 
-??? help "Known telescopes/instruments are using CHIME/FRB VOEvents"
+??? help "Known telescopes/instruments using CHIME/FRB VOEvents"
 
     The following is a recent list of all observatories, telescopes, and instruments currently using CHIME/FRB VOEvents.
     

@@ -12,7 +12,7 @@ The purpose of this website is to be the central resource for providing access t
 [:material-code-braces: Tutorials](catalog.md){: .md-button .md-button--primary }
 [:octicons-repo-push-16: VOEvents](voevents.md){: .md-button .md-button--primary }
 [:fontawesome-brands-python: Package](https://github.com/chime-frb-open-data/chime-frb-open-data){: .md-button .md-button--primary }
-[:material-account-supervisor: Support](https://github.com/chime-frb-open-data/community){: .md-button .md-button--primary }
+[:material-account-supervisor: Support](https://github.com/chime-frb-open-data/community/discussions){: .md-button .md-button--primary }
 
 </center>
 

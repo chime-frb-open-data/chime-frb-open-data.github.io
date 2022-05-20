@@ -83,4 +83,5 @@ nav:
       - Make an Exposure Map: exposure.md
       - Make a Localization Plot: localization.md
       - Make a Waterfall Plot: waterfall.md
+      - Read the Injection Data: injections.md
     - Previous Releases: code.md

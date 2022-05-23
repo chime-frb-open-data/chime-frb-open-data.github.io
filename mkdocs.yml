@@ -83,5 +83,6 @@ nav:
       - Make an Exposure Map: exposure.md
       - Make a Localization Plot: localization.md
       - Make a Waterfall Plot: waterfall.md
-      - Read the Injection Data: injections.md
+    - Read the Injection Data: injections.md
+    - Use the CHIME/FRB Beam Model: beam-model.md 
     - Previous Releases: code.md

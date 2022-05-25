@@ -7,19 +7,31 @@ library](https://pandas.pydata.org/) as a `DataFrame`.
     ```python
     import h5py
 
-    # Read in the full hdf5 injections file
-    fn = "chimefrb_catalog1_injections_full.h"
+    fn = "chimefrb_catalog1_injections_full.h5"
+    datafile = h5py.File(fn, 'r')
 
     # datafile.keys() will show the sets of data available:
     # ['frb', 'freq', 'injection_format', 'to_inject', 'to_inject_fit_spec_coeffs']
-    # (See the MetaData descriptions below)
 
-    # Create the dataset for all 5 million FRBs (hdf5)
+    # Create datasets: 'frb'
     dset_frb = datafile['frb']
     data_frb = dset_frb[()]
 
-    # List the properties available
-    property_set = dict(dset_frb.attrs)
+    # 'freq'
+    dset_freq = datafile['freq']
+    data_freq = dset_freq[()]
+
+    # 'injection_format'
+    dset_inj_format = datafile['injection_format']
+    data_inj_format = dset_inj_format['frb'][()]
+
+    # 'to_inject'
+    dset_to_inj = datafile['to_inject']
+    data_to_inj = dset_to_inj[()]
+
+    # 'to_inject_fit_spec_coeffs'
+    dset_speccoeffs = datafile['to_inject_fit_spec_coeffs']
+    data_speccoeffs = dset_speccoeffs[()]
     ```
 
 ??? Hint "MetaData descriptions"
@@ -37,8 +49,22 @@ library](https://pandas.pydata.org/) as a `DataFrame`.
     - `freq`: The dataset of 1024 frequencies (~400-800 MHz) used for determining the spectral properties for each FRB.
     - `injection_format`: A goup which has one key containing a dataset (`datafile['injection_format']['frb']`) with information for the 5 million FRBs in the format expected by the injection API. The `data_inj_format.dtype` shows which attributes are available in this dataset:
         - `beam_no`: The CHIME/FRB beam number for the injection. Given as -1 for the majority of events, as they were not put up for injection. For the frbs which were put up for injection, there are four beam columns: the zeroeth column has beams `0-255`, the first has beams `1000-1255`, the second has beams `2000-2255`, and the third has beams `3000-3255`.
-        - `injection_program_id`: TODO -- need to fill in the last of these things!
+        - `injection_program_id`: The name of the injection program used to identify sets of injected bursts. In this data, the id has not been filled yet, and it has been temporarily populated with the index.
+        - `beam_x` and `beam_y`: Same as `x` and `y` for the `frb` key.
+        - `dm`: Same as in the `frb` key.
+        - `tau_1_ghz`: The scattering time referenced to 1 GHz, in ?? (TODO: is this ms or s? I want to say ms based on values but unsure)
+        - `pulse_width_ms`: The intrinsic width of a given FRB, in ms.
+        - `fluence`: The fluence of a given FRB, in Jy ms.
+        - `spindex` and `running`: Same as index 1 and 2 of `spec_coeffs` for the `frb` key.
+        - `to_inject`: The boolean stating whether or not the burst made the cut into the `to_inject` dataset.
+        - `injected`: The boolean stating whether a given burst has yet been injected. Note that since this information was updated in a different file, all values here are `False`.
     - `to_inject`: The dataset of ~97,000 bursts which are a subset of the 5 million that passed the SNR estimate cut to go up for injection. Note only ~85,000 of these were injected, as some injections were lost due to networking issues.
+        - `frb_ind`: The index in the `injection_format` corresponding to a given `to_inject` burst.
+        - `beam_id`: Same as `beam_no` in the `injection_format` key.
+        - `snr_estimate`: The estimated signal-to-noise of the injected events, determining whether the event would be put up for injection, calculated using the radiometer equation. For the `to_inject` dataset, the cutoff SNR was set to 20. While this is significantly higher than the SNR cutoff of 9 used in L1 for the majority of the First CHIME/FRB Catalog, the adjustment was necessary because the estimated SNR using the idealized assumptions in the radiometer equation was far too optimistic compared to actual detection SNRs in initial tests.
+        - `fluence_spectrum`: An array with 1024 fluence values from 400 to 800 MHz, giving the time-integrated fluence spectrum of a synthesized FRB.
+    - `to_inject_fit_spec_coeffs`: The array of fit spectral coefficients for the ~97,000 `to_inject` events. The array indices are the same as given for `spec_coeffs` in the `frb` dataset. These fits were used as the best estimate of what spectral coefficients would be recovered from CHIME/FRB intensity data, based on the `fluence_spectrum` of the `to_inject` bursts. (TODO: A little unsure of this definition!)
+
 
 ???+ Example "Read in the ~85,000 injected events"
         

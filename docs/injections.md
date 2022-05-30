@@ -38,23 +38,23 @@ library](https://pandas.pydata.org/) as a `DataFrame`.
     Description for each of the datafile keys:
 
     - `frb`: The dataset for all 5 million FRBs (hint: empty tuples retrieve all data for `hdf5` datasets). The `data_frb.dtype` shows which attributes are available in this dataset:
-        - `loc_ind`: The index of the sky location chosen for a given FRB. (TODO: is this interpretation correct, and is the information of sky location available anywhere? I guess through x and y beam coords? When I sort the array (`sorted(data_frb['loc_ind'])`), lots of repeated positions...)
+        - `loc_ind`: The index of the sky location chosen for a given FRB in fixed telescope coordinates. These indexes are drawn to correspond with locations where we expect the beam response to be significant enough for possible detection of synthetic bursts.
         - `dm`: The DM of a given FRB, in pc/cm^3.
         - `width`: The intrinsic width of a given FRB, in s.
-        - `scat_ref`: The scattering time of a given FRB, in s, at a reference frequency of (?) (TODO: reference frequency of scattering time? At least I think that's what `_ref` refers to!)
-        - `spec_coeffs`: The array of three spectral coefficients for an FRB. The three indices of `spec_coeffs` give the log normalization (index 0), spectral index (index 1), spectral running (index 2) (TODO: Very uncertain about these! Definitely needs double checking... Mainly the index 0, as in `data_inj_format`, I can see `spindex` matches index 1 and `running` matches index 2)
+        - `scat_ref`: The scattering time of a given FRB, in s, at a reference frequency of 600 MHz.
+        - `spec_coeffs`: The array of three spectral coefficients for an FRB. The three indices of `spec_coeffs` give the log of the bandaveraged fluence of the spectrum normalized by the band mean fluence of the spectrum (index 0), spectral index (index 1), spectral running (index 2). Note the latter two values are referenced at 400 MHz.
         - `x`: The CHIME/FRB beam model x coordinate for the given FRB
         - `y`: The CHIME/FRB beam model y coordinate for the given FRB
-        - `ra`, `dec`, `to_inf`, and `toa_inf_offset` are unused
+        - `ra`, `dec`, `to_inf`, and `toa_inf` are unused
     - `freq`: The dataset of 1024 frequencies (~400-800 MHz) used for determining the spectral properties for each FRB.
-    - `injection_format`: A goup which has one key containing a dataset (`datafile['injection_format']['frb']`) with information for the 5 million FRBs in the format expected by the injection API. The `data_inj_format.dtype` shows which attributes are available in this dataset:
+    - `injection_format`: A group which has one key containing a dataset (`datafile['injection_format']['frb']`) with information for the 5 million FRBs in the format expected by the injection API. The `data_inj_format.dtype` shows which attributes are available in this dataset:
         - `beam_no`: The CHIME/FRB beam number for the injection. Given as -1 for the majority of events, as they were not put up for injection. For the frbs which were put up for injection, there are four beam columns: the zeroeth column has beams `0-255`, the first has beams `1000-1255`, the second has beams `2000-2255`, and the third has beams `3000-3255`.
         - `injection_program_id`: The name of the injection program used to identify sets of injected bursts. In this data, the id has not been filled yet, and it has been temporarily populated with the index.
         - `beam_x` and `beam_y`: Same as `x` and `y` for the `frb` key.
         - `dm`: Same as in the `frb` key.
-        - `tau_1_ghz`: The scattering time referenced to 1 GHz, in ?? (TODO: is this ms or s? I want to say ms based on values but unsure)
+        - `tau_1_ghz`: The scattering time referenced to 1 GHz, in ms.
         - `pulse_width_ms`: The intrinsic width of a given FRB, in ms.
-        - `fluence`: The fluence of a given FRB, in Jy ms.
+        - `fluence`: The band mean fluence of a given FRB, in Jy ms.
         - `spindex` and `running`: Same as index 1 and 2 of `spec_coeffs` for the `frb` key.
         - `to_inject`: The boolean stating whether or not the burst made the cut into the `to_inject` dataset.
         - `injected`: The boolean stating whether a given burst has yet been injected. Note that since this information was updated in a different file, all values here are `False`.
@@ -62,8 +62,8 @@ library](https://pandas.pydata.org/) as a `DataFrame`.
         - `frb_ind`: The index in the `injection_format` corresponding to a given `to_inject` burst.
         - `beam_id`: Same as `beam_no` in the `injection_format` key.
         - `snr_estimate`: The estimated signal-to-noise of the injected events, determining whether the event would be put up for injection, calculated using the radiometer equation. For the `to_inject` dataset, the cutoff SNR was set to 20. While this is significantly higher than the SNR cutoff of 9 used in L1 for the majority of the First CHIME/FRB Catalog, the adjustment was necessary because the estimated SNR using the idealized assumptions in the radiometer equation was far too optimistic compared to actual detection SNRs in initial tests.
-        - `fluence_spectrum`: An array with 1024 fluence values from 400 to 800 MHz, giving the time-integrated fluence spectrum of a synthesized FRB.
-    - `to_inject_fit_spec_coeffs`: The array of fit spectral coefficients for the ~97,000 `to_inject` events. The array indices are the same as given for `spec_coeffs` in the `frb` dataset. These fits were used as the best estimate of what spectral coefficients would be recovered from CHIME/FRB intensity data, based on the `fluence_spectrum` of the `to_inject` bursts. (TODO: A little unsure of this definition!)
+        - `fluence_spectrum`: An array with 1024 fluence values from 400 to 800 MHz, giving the time-integrated fluence spectrum of a synthesized FRB. This spectrum is modulated by the beam.
+    - `to_inject_fit_spec_coeffs`: The array of fit spectral coefficients for the ~97,000 `to_inject` events. The array indices are the same as given for `spec_coeffs` in the `frb` dataset. These fits were used as the best estimate of what spectral coefficients would be recovered from CHIME/FRB intensity data, based on the `fluence_spectrum` of the `to_inject` bursts.
 
 
 ???+ Example "Read in the ~85,000 injected events"
@@ -77,6 +77,8 @@ library](https://pandas.pydata.org/) as a `DataFrame`.
     data = pd.read_pickle(fn)
 
     # Now separate the data into categories: detected, non-detected, and RFI
+    # Note that in the CHIME/FRB Catalog 1 analysis, an rfi_threshold of 7
+    # and a high_snr_override of 30 were used.
     snr_threshold = 9.
     rfi_threshold = 5.
     high_snr_override = 100.

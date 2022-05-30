@@ -595,25 +595,25 @@ library</a> as a <code>DataFrame</code>.</p>
 <details class="hint"><summary>MetaData descriptions</summary><p>Description for each of the datafile keys:</p>
 <ul>
 <li><code>frb</code>: The dataset for all 5 million FRBs (hint: empty tuples retrieve all data for <code>hdf5</code> datasets). The <code>data_frb.dtype</code> shows which attributes are available in this dataset:<ul>
-<li><code>loc_ind</code>: The index of the sky location chosen for a given FRB. (TODO: is this interpretation correct, and is the information of sky location available anywhere? I guess through x and y beam coords? When I sort the array (<code>sorted(data_frb['loc_ind'])</code>), lots of repeated positions...)</li>
+<li><code>loc_ind</code>: The index of the sky location chosen for a given FRB in fixed telescope coordinates. These indexes are drawn to correspond with locations where we expect the beam response to be significant enough for possible detection of synthetic bursts.</li>
 <li><code>dm</code>: The DM of a given FRB, in pc/cm^3.</li>
 <li><code>width</code>: The intrinsic width of a given FRB, in s.</li>
-<li><code>scat_ref</code>: The scattering time of a given FRB, in s, at a reference frequency of (?) (TODO: reference frequency of scattering time? At least I think that's what <code>_ref</code> refers to!)</li>
-<li><code>spec_coeffs</code>: The array of three spectral coefficients for an FRB. The three indices of <code>spec_coeffs</code> give the log normalization (index 0), spectral index (index 1), spectral running (index 2) (TODO: Very uncertain about these! Definitely needs double checking... Mainly the index 0, as in <code>data_inj_format</code>, I can see <code>spindex</code> matches index 1 and <code>running</code> matches index 2)</li>
+<li><code>scat_ref</code>: The scattering time of a given FRB, in s, at a reference frequency of 600 MHz.</li>
+<li><code>spec_coeffs</code>: The array of three spectral coefficients for an FRB. The three indices of <code>spec_coeffs</code> give the log of the bandaveraged fluence of the spectrum normalized by the band mean fluence of the spectrum (index 0), spectral index (index 1), spectral running (index 2). Note the latter two values are referenced at 400 MHz.</li>
 <li><code>x</code>: The CHIME/FRB beam model x coordinate for the given FRB</li>
 <li><code>y</code>: The CHIME/FRB beam model y coordinate for the given FRB</li>
-<li><code>ra</code>, <code>dec</code>, <code>to_inf</code>, and <code>toa_inf_offset</code> are unused</li>
+<li><code>ra</code>, <code>dec</code>, <code>to_inf</code>, and <code>toa_inf</code> are unused</li>
 </ul>
 </li>
 <li><code>freq</code>: The dataset of 1024 frequencies (~400-800 MHz) used for determining the spectral properties for each FRB.</li>
-<li><code>injection_format</code>: A goup which has one key containing a dataset (<code>datafile['injection_format']['frb']</code>) with information for the 5 million FRBs in the format expected by the injection API. The <code>data_inj_format.dtype</code> shows which attributes are available in this dataset:<ul>
+<li><code>injection_format</code>: A group which has one key containing a dataset (<code>datafile['injection_format']['frb']</code>) with information for the 5 million FRBs in the format expected by the injection API. The <code>data_inj_format.dtype</code> shows which attributes are available in this dataset:<ul>
 <li><code>beam_no</code>: The CHIME/FRB beam number for the injection. Given as -1 for the majority of events, as they were not put up for injection. For the frbs which were put up for injection, there are four beam columns: the zeroeth column has beams <code>0-255</code>, the first has beams <code>1000-1255</code>, the second has beams <code>2000-2255</code>, and the third has beams <code>3000-3255</code>.</li>
 <li><code>injection_program_id</code>: The name of the injection program used to identify sets of injected bursts. In this data, the id has not been filled yet, and it has been temporarily populated with the index.</li>
 <li><code>beam_x</code> and <code>beam_y</code>: Same as <code>x</code> and <code>y</code> for the <code>frb</code> key.</li>
 <li><code>dm</code>: Same as in the <code>frb</code> key.</li>
-<li><code>tau_1_ghz</code>: The scattering time referenced to 1 GHz, in ?? (TODO: is this ms or s? I want to say ms based on values but unsure)</li>
+<li><code>tau_1_ghz</code>: The scattering time referenced to 1 GHz, in ms.</li>
 <li><code>pulse_width_ms</code>: The intrinsic width of a given FRB, in ms.</li>
-<li><code>fluence</code>: The fluence of a given FRB, in Jy ms.</li>
+<li><code>fluence</code>: The band mean fluence of a given FRB, in Jy ms.</li>
 <li><code>spindex</code> and <code>running</code>: Same as index 1 and 2 of <code>spec_coeffs</code> for the <code>frb</code> key.</li>
 <li><code>to_inject</code>: The boolean stating whether or not the burst made the cut into the <code>to_inject</code> dataset.</li>
 <li><code>injected</code>: The boolean stating whether a given burst has yet been injected. Note that since this information was updated in a different file, all values here are <code>False</code>.</li>
@@ -623,10 +623,10 @@ library</a> as a <code>DataFrame</code>.</p>
 <li><code>frb_ind</code>: The index in the <code>injection_format</code> corresponding to a given <code>to_inject</code> burst.</li>
 <li><code>beam_id</code>: Same as <code>beam_no</code> in the <code>injection_format</code> key.</li>
 <li><code>snr_estimate</code>: The estimated signal-to-noise of the injected events, determining whether the event would be put up for injection, calculated using the radiometer equation. For the <code>to_inject</code> dataset, the cutoff SNR was set to 20. While this is significantly higher than the SNR cutoff of 9 used in L1 for the majority of the First CHIME/FRB Catalog, the adjustment was necessary because the estimated SNR using the idealized assumptions in the radiometer equation was far too optimistic compared to actual detection SNRs in initial tests.</li>
-<li><code>fluence_spectrum</code>: An array with 1024 fluence values from 400 to 800 MHz, giving the time-integrated fluence spectrum of a synthesized FRB.</li>
+<li><code>fluence_spectrum</code>: An array with 1024 fluence values from 400 to 800 MHz, giving the time-integrated fluence spectrum of a synthesized FRB. This spectrum is modulated by the beam.</li>
 </ul>
 </li>
-<li><code>to_inject_fit_spec_coeffs</code>: The array of fit spectral coefficients for the ~97,000 <code>to_inject</code> events. The array indices are the same as given for <code>spec_coeffs</code> in the <code>frb</code> dataset. These fits were used as the best estimate of what spectral coefficients would be recovered from CHIME/FRB intensity data, based on the <code>fluence_spectrum</code> of the <code>to_inject</code> bursts. (TODO: A little unsure of this definition!)</li>
+<li><code>to_inject_fit_spec_coeffs</code>: The array of fit spectral coefficients for the ~97,000 <code>to_inject</code> events. The array indices are the same as given for <code>spec_coeffs</code> in the <code>frb</code> dataset. These fits were used as the best estimate of what spectral coefficients would be recovered from CHIME/FRB intensity data, based on the <code>fluence_spectrum</code> of the <code>to_inject</code> bursts.</li>
 </ul>
 </details>
 <details class="example" open="open"><summary>Read in the ~85,000 injected events</summary><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -637,6 +637,8 @@ library</a> as a <code>DataFrame</code>.</p>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 
 <span class="c1"># Now separate the data into categories: detected, non-detected, and RFI</span>
+<span class="c1"># Note that in the CHIME/FRB Catalog 1 analysis, an rfi_threshold of 7</span>
+<span class="c1"># and a high_snr_override of 30 were used.</span>
 <span class="n">snr_threshold</span> <span class="o">=</span> <span class="mf">9.</span>
 <span class="n">rfi_threshold</span> <span class="o">=</span> <span class="mf">5.</span>
 <span class="n">high_snr_override</span> <span class="o">=</span> <span class="mf">100.</span>

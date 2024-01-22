@@ -61,7 +61,7 @@
 
 
 ??? help "Does CHIME/FRB issue retractions for spurious events?"
-    Real-time VOEvents are verified by humans only after they have been VOEvent has been published. Following human verification, an event may be found to be a false positive signal, for example due to RFI contamination. While the real-time FRB detection pipeline performs multiple levels of RFI excision, it is not a perfect filter. 
+    Real-time VOEvents are verified by humans only after a VOEvent has been published. Following human verification, an event may be found to be a false positive signal, for example due to RFI contamination. While the real-time FRB detection pipeline performs multiple levels of RFI excision, it is not a perfect filter. 
 
     Under the current regime, once per day around 22:00 Pacific Standard Time we will publish _retraction_ VOEvents in bulk for all false positives classified in the previous 24 hour period.
 
